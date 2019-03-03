@@ -1,0 +1,9 @@
+{
+  "name": "create-galhofa",
+  "version": "0.0.4",
+  "main": "./bin/index.js",
+  "path": "./bin/index.js",
+  "bin": {
+    "create-galhhofa": "bin/index.js"
+  }
+}
