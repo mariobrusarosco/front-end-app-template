@@ -1,11 +1,11 @@
 const path = require('path')
 const inquirer = require('inquirer')
 
-const askAboutConfigFolder = cwdPath => {
+const askAboutBuild = cwdPath => {
   const cwd = path.basename(cwdPath)
   const question = [
     {
-      name: `webpackFolder`,
+      name: `existingWebpack`,
       type: "list",
       message: `You already have a folder named 'webpack' inside /${cwd}/ folder. Do you want to override it?`,
       choices: ['yes','no'],
@@ -16,6 +16,37 @@ const askAboutConfigFolder = cwdPath => {
   return inquirer.prompt(question)
 }
 
+const askAboutFonts = () => {
+  const fonts = [
+    {
+      name: 'fonts',
+      type: 'confirm',
+      message: `Are you going to use fonts hosted in your project (via '@font-face' rule?`,
+      default: 'no'
+    }
+  ]
+
+  return inquirer.prompt(fonts)
+}
+
+
+const askAboutFontFormats = () => {
+  const fontFormats = [
+    {
+      name: 'fontTypes',
+      type: 'checkbox',
+      message: `Choose some font formats:`,
+      choices: [' ttf',' woff',' woff2',' oet',' otf',' all'],
+      default: ['all']
+    }
+  ]
+
+  return inquirer.prompt(fontFormats)
+}
+
 module.exports = {
-  askAboutConfigFolder
+  askAboutBuild,
+  askAboutFonts,
+  askAboutFontFormats,
+  // askAboutLoaders,
 }

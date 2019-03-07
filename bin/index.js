@@ -6,15 +6,35 @@ const fs = require('fs')
 
 // Inquirer
 const {
-  createConfigFolder
+  verifyExistingBuild,
+  gatherLoadersInfo,
 } = require('../src/core')
 
 
-module.exports = (async () => {
+const run = async () => {
 
-  console.log(chalk.green(figlet.textSync("Galhofa")))
+  console.log(chalk.green(figlet.textSync("Create Galhofa")))
 
-  createConfigFolder()
+  let answersMapper = []
+
+  const existsBuildProcess = await verifyExistingBuild()
+  console.log('')
+  const loadersAnswers = await gatherLoadersInfo()
+  console.log('')
+
+  // console.log('loaderes asnwer', loadersAnswers)
+  // answersMapper = [...answersMapper]
+  // console.log(existsBuildProcess)
+
+
+
+  // const result = await createWebpackLoaders()
+
+  console.log('waited for folder creation process')
+
+  // console.log(result)
   // Todo createLConfigFiles()
   // Todo createLoaders()
-})()
+}
+
+module.exports = run()

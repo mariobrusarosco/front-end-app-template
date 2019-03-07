@@ -1,13 +1,13 @@
 {
   "name": "create-galhofa",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "author": "Mario Brusarosco de Almeida <mariobrusarosco@gmail.com>",
   "main": "./bin/index.js",
   "path": "./bin/index.js",
   "bin": {
     "create-galhofa": "bin/index.js"
   },
-  "devDependencies": {
+  "dependencies": {
     "chalk": "^2.4.2",
     "figlet": "^1.2.1",
     "inquirer": "^6.2.2",
