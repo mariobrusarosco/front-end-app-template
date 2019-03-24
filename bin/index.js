@@ -18,9 +18,9 @@ const run = async () => {
   let answersMapper = []
 
   const existsBuildProcess = await verifyExistingBuild()
-  console.log('')
-  const loadersAnswers = await gatherLoadersInfo()
-  console.log('')
+  console.log(`\n`)
+  // const loadersAnswers = await gatherLoadersInfo()
+  // console.log(`\n`)
 
   // console.log('loaderes asnwer', loadersAnswers)
   // answersMapper = [...answersMapper]
