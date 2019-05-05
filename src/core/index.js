@@ -35,8 +35,8 @@ const verifyExistingBuild = () => {
     const cwd = process.cwd()
     const directoryPath = `${cwd}/${projectName}-webpack`
 
-    if (fs.existsSync('webpack'))  {
-      const answer = await askAboutBuild(cwd)
+    if (fs.existsSync(directoryPath))  {
+      const answer = await askAboutBuild(directoryPath)
 
       if (answer.existingWebpack === 'no') {
         console.log('Bye')

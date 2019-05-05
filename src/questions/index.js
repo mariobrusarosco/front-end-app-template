@@ -13,12 +13,13 @@ const askAboutProjectName = () => {
 }
 
 const askAboutBuild = cwdPath => {
-  const cwd = path.basename(cwdPath)
+  const { dir, base } = path.parse(cwdPath)
+
   const question = [
     {
       name: `existingWebpack`,
       type: "list",
-      message: `You already have a folder named 'webpack' inside /${cwd}/ folder. Do you want to override it?`,
+      message: `You already have a folder named '${base}' inside '${dir}' folder. Do you want to override it?`,
       choices: ['yes','no'],
       default: ['no'],
     }
