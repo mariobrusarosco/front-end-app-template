@@ -1,6 +1,17 @@
 const path = require('path')
 const inquirer = require('inquirer')
 
+const askAboutProjectName = () => {
+  const question = [
+    {
+      name: 'projectName',
+      type: 'input',
+      message: 'Type your projects name'
+    }
+  ]
+  return inquirer.prompt(question)
+}
+
 const askAboutBuild = cwdPath => {
   const cwd = path.basename(cwdPath)
   const question = [
@@ -29,7 +40,6 @@ const askAboutFonts = () => {
   return inquirer.prompt(fonts)
 }
 
-
 const askAboutFontFormats = () => {
   const fontFormats = [
     {
@@ -45,6 +55,7 @@ const askAboutFontFormats = () => {
 }
 
 module.exports = {
+  askAboutProjectName,
   askAboutBuild,
   askAboutFonts,
   askAboutFontFormats,

@@ -6,16 +6,20 @@ const fs = require('fs')
 
 // Inquirer
 const {
+  getProjectName,
   verifyExistingBuild,
   gatherLoadersInfo,
 } = require('../src/core')
 
 
 const run = async () => {
-
   console.log(chalk.green(figlet.textSync("Create Galhofa")))
 
-  let answersMapper = []
+  global.answersMap = {}
+
+
+  const { projectName } = await getProjectName()
+  global.answersMap = { ...global.answersMap, projectName }
 
   const existsBuildProcess = await verifyExistingBuild()
   console.log(`\n`)

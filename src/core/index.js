@@ -7,15 +7,33 @@ const { mkdirCallback } = require('../utils')
 
 // Question(s)
 const {
+  askAboutProjectName,
   askAboutBuild,
   askAboutFonts,
   askAboutFontFormats,
 } = require('../questions')
 
-const verifyExistingBuild = () => {
+const getProjectName = () => {
   return new Promise(async (resolve, reject) => {
+    const answer = await askAboutProjectName()
+
+    resolve(answer)
+  })
+}
+
+const verifyExistingBuild = () => {
+  const answersMap = global.answersMap || {}
+
+  return new Promise(async (resolve, reject) => {
+    const projectName = answersMap.projectName
+
+    if (!projectName) {
+      throw new Error('You must provide a name for your project to continue the process')
+      process.exit(-1)
+    }
+
     const cwd = process.cwd()
-    const directoryPath = `${cwd}/webpack`
+    const directoryPath = `${cwd}/${projectName}-webpack`
 
     if (fs.existsSync('webpack'))  {
       const answer = await askAboutBuild(cwd)
@@ -68,6 +86,8 @@ const gatherLoadersInfo = () => {
 
 
 module.exports = {
+  getProjectName,
+  askAboutProjectName,
   verifyExistingBuild,
   gatherLoadersInfo,
   askAboutFontFormats,
