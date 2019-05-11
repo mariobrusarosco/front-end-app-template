@@ -1,10 +1,14 @@
 #!/usr/bin/env node
-const path = require('path')
-const figlet = require('figlet');
-const chalk = require('chalk')
-const fs = require('fs')
 
-// Inquirer
+
+
+// Commands
+const initCommand = require('../src/commands/init')
+// Yargs
+const yargs = require('yargs')
+.command(initCommand)
+
+// Question Process via Inquirer
 const {
   getProjectName,
   verifyExistingBuild,
@@ -12,33 +16,38 @@ const {
 } = require('../src/core')
 
 
-const run = async () => {
-  console.log(chalk.green(figlet.textSync("Create Galhofa")))
+const typedCommands = yargs.argv._
 
-  global.answersMap = {}
+if (!typedCommands.length) {
+  return console.log(`Please type 'create galhofa --help' to see the available commands`)
+}
 
+  // // Project Name
+  // const { projectName } = await getProjectName()
+  // global.answersMap = { ...global.answersMap, projectName }
 
-  const { projectName } = await getProjectName()
-  global.answersMap = { ...global.answersMap, projectName }
-
-  const existsBuildProcess = await verifyExistingBuild()
-  console.log(`\n`)
-  // const loadersAnswers = await gatherLoadersInfo()
+  // // Checking already existing directories
+  // const existsBuildProcess = await verifyExistingBuild()
   // console.log(`\n`)
 
-  // console.log('loaderes asnwer', loadersAnswers)
-  // answersMapper = [...answersMapper]
-  // console.log(existsBuildProcess)
+  // // Answers to create webpack's loaders
+  // const loadersAnswers = await gatherLoadersInfo()
+  // global.answersMap = { ...global.answersMap, loadersAnswers }
+  // console.log(`\n`)
+
+  // console.log('loaderes asnwer', global.answersMap.loadersAnswers)
+  // // answersMapper = [...answersMapper]
+  // // console.log(existsBuildProcess)
 
 
 
-  // const result = await createWebpackLoaders()
+  // // const result = await createWebpackLoaders()
 
-  console.log('waited for folder creation process')
+  // console.log('waited for folder creation process')
 
   // console.log(result)
   // Todo createLConfigFiles()
   // Todo createLoaders()
-}
+// }
 
-module.exports = run()
+module.exports = yargs.argv

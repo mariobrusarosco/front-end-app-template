@@ -29,7 +29,7 @@ const askAboutBuild = cwdPath => {
 }
 
 const askAboutFonts = () => {
-  const fonts = [
+  const question = [
     {
       name: 'fonts',
       type: 'confirm',
@@ -38,7 +38,7 @@ const askAboutFonts = () => {
     }
   ]
 
-  return inquirer.prompt(fonts)
+  return inquirer.prompt(question)
 }
 
 const askAboutFontFormats = () => {

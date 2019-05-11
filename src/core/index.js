@@ -36,9 +36,9 @@ const verifyExistingBuild = () => {
     const directoryPath = `${cwd}/${projectName}-webpack`
 
     if (fs.existsSync(directoryPath))  {
-      const answer = await askAboutBuild(directoryPath)
+      const { existingWebpack } = await askAboutBuild(directoryPath)
 
-      if (answer.existingWebpack === 'no') {
+      if (existingWebpack === 'no') {
         console.log('Bye')
         process.exit(-1)
       }
@@ -65,9 +65,11 @@ const gatherLoadersInfo = () => {
 
   return new Promise(async (resolve, reject) => {
     const { willUseFonts } = await askAboutFonts()
+    console.log('willUseFonts', willUseFonts)
+
+    debugger
     const fontFormats = willUseFonts && await askAboutFontFormats()
 
-    console.log(fontFormats)
 
     resolve()
     // resolve(answer)
