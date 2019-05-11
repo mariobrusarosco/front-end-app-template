@@ -9,9 +9,10 @@ const {
 
 // Question Process via Inquirer
 const {
+  verifyExistingProject,
   getProjectName,
-  verifyPackageJSON,
   gatherLoadersInfo,
+  createStructure,
 } = require('../../core')
 
 const initCommand = yargs.command('init', 'This command start your Front End Build configuration', yargs => {
@@ -28,11 +29,15 @@ const initCommand = yargs.command('init', 'This command start your Front End Bui
 
     let answersMap = {}
 
+    await verifyExistingProject()
+
     // Project Name
     const projectName = await getProjectName()
     answersMap = { ...answersMap, projectName }
 
-    console.log(answersMap)
+    console.log('checking package.json', answersMap)
+
+    console.log(process.cwd())
 
     // Checking already existing package.json
     // const existsBuildProcess = await verifyPackageJSON()
@@ -52,12 +57,14 @@ const initCommand = yargs.command('init', 'This command start your Front End Bui
 
     // const result = await createWebpackLoaders()
 
-    console.log('waited for folder creation process')
+    console.log('waited for folder creation process...creating')
 
+    await createStructure(answersMap)
     // console.log(result)
     // Todo createLConfigFiles()
     // Todo createLoaders()
 
+    process.exit(0)
   })()
 
 })
