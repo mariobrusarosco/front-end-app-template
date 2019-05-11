@@ -12,14 +12,14 @@ const askAboutProjectName = () => {
   return inquirer.prompt(question)
 }
 
-const askAboutBuild = cwdPath => {
-  const { dir, base } = path.parse(cwdPath)
+const askAboutPackageJSON = cwdPath => {
+  const { dir } = path.parse(cwdPath)
 
   const question = [
     {
-      name: `existingWebpack`,
+      name: `existingPackageJSON`,
       type: "list",
-      message: `You already have a folder named '${base}' inside '${dir}' folder. Do you want to override it?`,
+      message: `You already have a file named 'package.json' inside '${dir}' folder. Do you want to override it?`,
       choices: ['yes','no'],
       default: ['no'],
     }
@@ -31,7 +31,7 @@ const askAboutBuild = cwdPath => {
 const askAboutFonts = () => {
   const question = [
     {
-      name: 'fonts',
+      name: 'willUseFonts',
       type: 'confirm',
       message: `Are you going to use fonts hosted in your project (via '@font-face' rule?`,
       default: 'no'
@@ -47,7 +47,7 @@ const askAboutFontFormats = () => {
       name: 'fontTypes',
       type: 'checkbox',
       message: `Choose some font formats:`,
-      choices: [' ttf',' woff',' woff2',' oet',' otf',' all'],
+      choices: ['ttf','woff','woff2','oet','otf','all'],
       default: ['all']
     }
   ]
@@ -57,7 +57,7 @@ const askAboutFontFormats = () => {
 
 module.exports = {
   askAboutProjectName,
-  askAboutBuild,
+  askAboutPackageJSON,
   askAboutFonts,
   askAboutFontFormats,
   // askAboutLoaders,
