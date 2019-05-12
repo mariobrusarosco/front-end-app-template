@@ -12,7 +12,6 @@ const {
 // Question(s)
 const {
   askAboutProjectName,
-  askAboutPackageJSON,
   askAboutFonts,
   askAboutFontFormats,
 } = require('../questions')
@@ -232,11 +231,9 @@ const gatherLoadersInfo = () => {
   })
 }
 
-
 module.exports = {
   getProjectName,
   verifyExistingProject,
-  // verifyPackageJSON,
   // gatherLoadersInfo,
   // askAboutFontFormats,
   createStructure

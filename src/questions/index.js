@@ -12,21 +12,6 @@ const askAboutProjectName = () => {
   return inquirer.prompt(question)
 }
 
-const askAboutPackageJSON = cwdPath => {
-  const { dir } = path.parse(cwdPath)
-
-  const question = [
-    {
-      name: `existingPackageJSON`,
-      type: "list",
-      message: `You already have a file named 'package.json' inside '${dir}' folder. Do you want to override it?`,
-      choices: ['yes','no'],
-      default: ['no'],
-    }
-  ]
-
-  return inquirer.prompt(question)
-}
 
 const askAboutFonts = () => {
   const question = [
@@ -57,7 +42,6 @@ const askAboutFontFormats = () => {
 
 module.exports = {
   askAboutProjectName,
-  askAboutPackageJSON,
   askAboutFonts,
   askAboutFontFormats,
   // askAboutLoaders,

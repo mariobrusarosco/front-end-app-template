@@ -4,9 +4,11 @@
 
 // Commands
 const initCommand = require('../src/commands/init')
+const startCommand = require('../src/commands/start')
 // Yargs
 const yargs = require('yargs')
 .command(initCommand)
+.command(startCommand)
 
 // Question Process via Inquirer
 const {

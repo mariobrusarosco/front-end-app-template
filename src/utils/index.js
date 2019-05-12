@@ -18,7 +18,7 @@ const createExternalPackageJSON = (answersMap) => {
     "description": "${projectName}",
     "private": true,
     "scripts": {
-      "dev-front": "webpack-dev-server -r dotenv/config --config ./webpack/configuration/development/index.js"
+      "dev": "create-galofha start"
     },
     "devDependencies": {
       "@babel/core": "^7.2.2",
