@@ -3,9 +3,11 @@ const rimraf = require('rimraf')
 const mkdirp = require('mkdirp')
 const path = require('path')
 const chalk = require('chalk')
+const { inspect } = require('util');
 
 // Utils
 const {
+  commonLoaders,
   mkdirCallback,
 } = require('../utils')
 
@@ -30,13 +32,12 @@ const getProjectName = () => {
 
 const verifyExistingProject = () => {
 
-  return new Promise(async (resolve, reject) => {
+  return new Promise(async (resolve) => {
     const cwd = process.cwd()
     const cwdContent = fs.readdirSync(cwd)
 
-
     if (cwdContent.length) {
-      console.log(chalk.red('Your Project Folder must be empty'))
+      console.log(chalk.red('Your Project Folder (root folder) must be empty. Help me here, please!'))
       process.exit(-1)
     }
 
@@ -44,14 +45,12 @@ const verifyExistingProject = () => {
   })
 }
 
-
-
-const createStructure = answersMap => {
+const createStructure = async answersMap => {
   const cwd = process.cwd()
 
   const packageJSON = `{
-    "name": "boilerplate",
-    "version": "4.4.6",
+    "name": "${answersMap.projectName}",
+    "version": "0.0.0",
     "description": "${answersMap.projectName}",
     "private": true,
     "scripts": {
@@ -79,6 +78,47 @@ const createStructure = answersMap => {
   }`
 
   fs.writeFileSync(`${cwd}/package.json`, packageJSON, 'utf-8')
+  rimraf.sync('./webpack')
+
+  fs.mkdirSync('./webpack/')
+  fs.mkdirSync('./webpack/loaders/')
+  fs.mkdirSync('./webpack/plugins/')
+  fs.mkdirSync('./webpack/configuration/')
+
+  // const file = fs.createWriteStream(
+  //   './webpack/loaders/asdsa.js'
+  // );
+  // await file.write('1');
+  // await file.end()
+  // // file.on('end', function() {
+  // })
+  var readableStream = fs.createReadStream('file1.txt');
+  var writableStream = fs.createWriteStream('file2.txt');
+
+  readableStream.setEncoding('utf8');
+
+  readableStream.on('data', function(chunk) {
+      writableStream.write(chunk);
+  });
+
+  // fs.writeFileSync('./webpack/loaders/common.js', inspect({ name: 1}), 'utf-8')
+
+}
+    // fs.mkdirSync('./webpack/loaders/common')
+    // fs.mkdirSync('./webpack/loaders/development')
+    // fs.mkdirSync('./webpack/loaders/production')
+    // fs.mkdirSync('./webpack/configuration/common')
+    // fs.mkdirSync('./webpack/configuration/development')
+    // fs.mkdirSync('./webpack/configuration/production')
+    // fs.mkdirSync('./webpack/plugins/common')
+    // fs.mkdirSync('./webpack/plugins/development')
+    // fs.mkdirSync('./webpack/plugins/production')
+
+    // fs.writeFileSync('./webpack/configuration/common/index.js', commonConfig, 'utf-8')
+    // fs.writeFileSync('./webpack/plugins/common/index.js', commonPlugins(), 'utf-8')
+
+    // fs.writeFileSync('./webpack/configuration/development/index.js', developmentConfig('/'), 'utf-8')
+
   //   fs.mkdir(directoryPath, { recursive: true }, error => {
   //     if(error) {
   //       console.log('It was not possible to create a configuration folder: ', error)
@@ -90,20 +130,7 @@ const createStructure = answersMap => {
   //     resolve()
   //   })
   // })
-//   const commonLoaders = config => {
-//     return `
-//       const path = require('path')
 
-//       const commonLoaders = {
-//         test: /\.js$/,
-//         include: path.resolve('src'),
-//         exclude: /node_modules/,
-//         use: 'babel-loader',
-//       }
-
-//       module.exports = commonLoaders
-//     `
-//   }
 
 //   const srcPath = pathArray => {
 //     return pathArray.map(dir => '${dir}')
@@ -182,59 +209,26 @@ const createStructure = answersMap => {
 
 
 
-//   const start = async function() {
-//     rimraf.sync('./webpack')
 
-//     fs.mkdirSync('./webpack/')
-//     fs.mkdirSync('./webpack/loaders/')
-//     fs.mkdirSync('./webpack/loaders/common')
-//     fs.mkdirSync('./webpack/loaders/development')
-//     fs.mkdirSync('./webpack/loaders/production')
-//     fs.mkdirSync('./webpack/configuration/')
-//     fs.mkdirSync('./webpack/configuration/common')
-//     fs.mkdirSync('./webpack/configuration/development')
-//     fs.mkdirSync('./webpack/configuration/production')
-//     fs.mkdirSync('./webpack/plugins/')
-//     fs.mkdirSync('./webpack/plugins/common')
-//     fs.mkdirSync('./webpack/plugins/development')
-//     fs.mkdirSync('./webpack/plugins/production')
-
-//     fs.writeFileSync('./package.json', packageJSON, 'utf-8')
-//     fs.writeFileSync('./webpack/configuration/common/index.js', commonConfig, 'utf-8')
-//     fs.writeFileSync('./webpack/loaders/common/index.js', commonLoaders(), 'utf-8')
-//     fs.writeFileSync('./webpack/plugins/common/index.js', commonPlugins(), 'utf-8')
-
-//     fs.writeFileSync('./webpack/configuration/development/index.js', developmentConfig('/'), 'utf-8')
-//   }
-}
 
 const gatherLoadersInfo = () => {
-  const loadersInfo = {}
-
   return new Promise(async (resolve, reject) => {
     const { willUseFonts } = await askAboutFonts()
 
     const fontFormats = willUseFonts && await askAboutFontFormats()
 
-    resolve(fontFormats)
-    // resolve(answer)
+    const loadersInfo = {
+      fontFormats
+    }
 
-    // fs.mkdir(`${cwd}/webpack/loaders/common/index.js`, (error) => {
-    //   if (error) {
-    //     console.log(`Could not create this file. Reason: ${error}`)
-    //     reject()
-    //   }
-    //   else {
-    //     resolve(true)
-    //   }
-    // })
+    resolve(loadersInfo)
   })
 }
 
 module.exports = {
   getProjectName,
   verifyExistingProject,
-  // gatherLoadersInfo,
-  // askAboutFontFormats,
+  gatherLoadersInfo,
+  askAboutFontFormats,
   createStructure
 }
