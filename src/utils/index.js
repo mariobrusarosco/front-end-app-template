@@ -45,43 +45,9 @@ const createExternalPackageJSON = (answersMap) => {
 
 }
 
-const createFontsLoader = (fontsConfig) => (
-  {
-    test: /\.(ttf|woff|woff2|oet|otf)$/,
-    include: path.resolve('src','assets', 'fonts'),
-    use: [
-      'file-loader'
-    ]
-  }
-)
-
-// {
-//   test: /\.js$/,
-//   include: path.resolve('src'),
-//   exclude: /node_modules/,
-//   use: 'babel-loader',
-// }
-
-const commonLoaders = config => {
-  console.log({config})
-  const loaderForFonts = createFontsLoader(config.fontFormats)
-
-  const loaders = [loaderForFonts]
-
-  return loaders
-
-  // return `
-  //   const path = require('path')
-
-  //   const commonLoaders = ${loaders}
-
-  //   module.exports = commonLoaders;
-  // `
-}
 
 
 module.exports = {
-  commonLoaders,
   mkdirCallback,
   createExternalPackageJSON
 }

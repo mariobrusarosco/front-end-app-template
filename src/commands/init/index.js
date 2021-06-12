@@ -2,6 +2,8 @@ const yargs = require('yargs')
 const figlet = require('figlet');
 const chalk = require('chalk')
 const fs = require('fs')
+const util = require('util')
+const path = require('path')
 
 // Lib utils
 const {
@@ -22,21 +24,6 @@ const initCommand = yargs.command('init', 'This command start your Front End Bui
   (async () => {
     console.log(chalk.green(figlet.textSync("Create Galhofa")))
 
-    var stream = fs.createWriteStream("my_file.txt");
-    stream.once('open', function(fd) {
-      stream.write("My first row\n");
-      stream.write("My second row\n");
-      stream.end();
-    });
-    // const file = await fs.createWriteStream(
-    //   './wow.js'
-    // );
-
-    // file.write('1');
-    // file.end()
-    // file.on('end',)
-
-
     let answersMap = {}
 
     // await verifyExistingProject()
@@ -54,28 +41,16 @@ const initCommand = yargs.command('init', 'This command start your Front End Bui
       // console.log(`\n`)
 
     // Answers to create webpack's loaders
-    // const loadersAnswers = await gatherLoadersInfo()
-    //   answersMap = { ...answersMap, loadersAnswers }
-    //   console.log(`\n`)
-    //   console.log(answersMap)
+    const loadersAnswers = await gatherLoadersInfo()
+      answersMap = { ...answersMap, loadersAnswers }
+      // console.log('----loadersAnswers: ',loadersAnswers)
 
+      // console.log('waiting for folder creation process ...creating...')
 
-
-    // console.log(answersMap.loadersAnswers)
-    // answersMapper = [...answersMapper]
-    // console.log(existsBuildProcess)
-
-
-
-    // console.log('waiting for folder creation process ...creating...')
-
-    // await createStructure(answersMap)
+      await createStructure(answersMap)
     // console.log(result)
     // Todo createLConfigFiles()
     // Todo createLoaders()
-
-
-    process.exit(0)
   })()
 
 })

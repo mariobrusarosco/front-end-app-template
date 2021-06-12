@@ -29,11 +29,10 @@ const askAboutFonts = () => {
 const askAboutFontFormats = () => {
   const fontFormats = [
     {
-      name: 'fontTypes',
+      name: 'fontFormats',
       type: 'checkbox',
       message: `Choose some font formats:`,
-      choices: ['ttf','woff','woff2','oet','otf', 'all'],
-      // default: ['all']
+      choices: ['ttf','woff','woff2','oet','otf'],
     }
   ]
 

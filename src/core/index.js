@@ -3,11 +3,12 @@ const rimraf = require('rimraf')
 const mkdirp = require('mkdirp')
 const path = require('path')
 const chalk = require('chalk')
-const { inspect } = require('util');
 
+
+const createWebpackLoadersFile = require('../system-file-creation/common/create-webpack-loaders-file')
 // Utils
 const {
-  commonLoaders,
+  createCommonLoaders,
   mkdirCallback,
 } = require('../utils')
 
@@ -45,7 +46,9 @@ const verifyExistingProject = () => {
   })
 }
 
-const createStructure = async answersMap => {
+const createStructure = answersMap => {
+  // console.log('----createStructure / answersMap: ',answersMap)
+
   const cwd = process.cwd()
 
   const packageJSON = `{
@@ -85,37 +88,11 @@ const createStructure = async answersMap => {
   fs.mkdirSync('./webpack/plugins/')
   fs.mkdirSync('./webpack/configuration/')
 
-  // const file = fs.createWriteStream(
-  //   './webpack/loaders/asdsa.js'
-  // );
-  // await file.write('1');
-  // await file.end()
-  // // file.on('end', function() {
-  // })
-  var readableStream = fs.createReadStream('file1.txt');
-  var writableStream = fs.createWriteStream('file2.txt');
-
-  readableStream.setEncoding('utf8');
-
-  readableStream.on('data', function(chunk) {
-      writableStream.write(chunk);
-  });
-
-  // fs.writeFileSync('./webpack/loaders/common.js', inspect({ name: 1}), 'utf-8')
+  createWebpackLoadersFile(answersMap.loadersAnswers)
+  // createWebpackConfigurationFiles()
+  // createWebpackPluginsFiles()
 
 }
-    // fs.mkdirSync('./webpack/loaders/common')
-    // fs.mkdirSync('./webpack/loaders/development')
-    // fs.mkdirSync('./webpack/loaders/production')
-    // fs.mkdirSync('./webpack/configuration/common')
-    // fs.mkdirSync('./webpack/configuration/development')
-    // fs.mkdirSync('./webpack/configuration/production')
-    // fs.mkdirSync('./webpack/plugins/common')
-    // fs.mkdirSync('./webpack/plugins/development')
-    // fs.mkdirSync('./webpack/plugins/production')
-
-    // fs.writeFileSync('./webpack/configuration/common/index.js', commonConfig, 'utf-8')
-    // fs.writeFileSync('./webpack/plugins/common/index.js', commonPlugins(), 'utf-8')
 
     // fs.writeFileSync('./webpack/configuration/development/index.js', developmentConfig('/'), 'utf-8')
 
@@ -217,11 +194,7 @@ const gatherLoadersInfo = () => {
 
     const fontFormats = willUseFonts && await askAboutFontFormats()
 
-    const loadersInfo = {
-      fontFormats
-    }
-
-    resolve(loadersInfo)
+    resolve(fontFormats)
   })
 }
 
