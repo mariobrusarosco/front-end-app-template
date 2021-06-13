@@ -24,9 +24,11 @@ const createPackageJSON = (answersMap) => {
       "babel-loader": "^8.2.2",
       "clean-webpack-plugin": "^1.0.0",
       "compression-webpack-plugin": "^2.0.0",
-      "css-loader": "^1.0.1",
+      "css-loader": "^5.2.6",
       "dotenv": "^6.2.0",
+      "file-loader": "^6.2.0",
       "html-webpack-plugin": "^3.2.0",
+      "style-loader": "^2.0.0",
       "webpack": "^4.26.0",
       "webpack-cli": "^3.1.2",
       "webpack-dev-server": "^3.1.10"

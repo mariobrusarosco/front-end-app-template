@@ -1,5 +1,4 @@
 // const webpack = require('webpack')
-const path = require('path')
 // const config = require('dotenv').config()
 
 // const CleanWebpack = require('clean-webpack-plugin')

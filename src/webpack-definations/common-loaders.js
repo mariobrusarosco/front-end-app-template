@@ -4,7 +4,7 @@ const setWebpackLoaderForFonts = (fontFormats) => {
   const parsedFontsFormats = givenFontsFormats.join('|')
 
   return `{
-    test: new RegExp(/\\.(${parsedFontsFormats})$/),
+    test: /\\.(${parsedFontsFormats})$/,
     include: path.resolve('src','assets', 'fonts'),
     use: [
       'file-loader'
@@ -21,6 +21,20 @@ const setWebpackLoaderForScripts = (scriptFormats) => {
   }`
 }
 
+const setWebpackLoaderForStyle = (scriptFormats) => {
+  return `{
+    test: /\.css$/,
+    include: path.resolve('src'),
+    use: [
+      'style-loader',
+      {
+        loader: 'css-loader',
+      },
+    ]
+  }
+`
+}
+
 
 // Require Statements
 const requireStatements = [
@@ -29,13 +43,15 @@ const requireStatements = [
 
 const getWebpackCommonLoaders = loadersAnswers => {
   const loaderForFonts = setWebpackLoaderForFonts(loadersAnswers.fontFormats)
-  const loaderFontScript = setWebpackLoaderForScripts(loadersAnswers.fontFormats)
+  const loaderForScript = setWebpackLoaderForScripts(loadersAnswers.fontFormats)
+  const loaderForStyles = setWebpackLoaderForStyle(loadersAnswers.fontFormats)
 
   return {
     requireStatements,
     loaders: [
       loaderForFonts,
-      loaderFontScript
+      loaderForScript,
+      loaderForStyles
     ]
   }
 }
