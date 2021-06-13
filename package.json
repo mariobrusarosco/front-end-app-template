@@ -15,5 +15,9 @@
     "mkdirp": "^1.0.4",
     "rimraf": "^3.0.2",
     "yargs": "^13.2.2"
+  },
+  "devDependencies": {
+    "babel-loader": "^8.2.2",
+    "html-webpack-plugin": "^5.3.1"
   }
 }

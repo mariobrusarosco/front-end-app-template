@@ -5,7 +5,12 @@ const path = require('path')
 const chalk = require('chalk')
 
 
-const createWebpackLoadersFile = require('../system-file-creation/common/create-webpack-loaders-file')
+const createWebpackLoadersFile = require('../system-file-creation/create-webpack-loaders-file')
+const createWebpackConfigurationFile = require('../system-file-creation/create-webpack-configuration-file')
+const createWebpackPluginsFiles = require('../system-file-creation/create-webpack-plugins-file')
+const createWebpackBuildFile = require('../system-file-creation/create-webpack-build-file')
+const createPackageJSON = require('../system-file-creation/create-package-json')
+
 // Utils
 const {
   createCommonLoaders,
@@ -57,7 +62,7 @@ const createStructure = answersMap => {
     "description": "${answersMap.projectName}",
     "private": true,
     "scripts": {
-      "dev-front": "webpack-dev-server -r dotenv/config --config ./webpack/configuration/development/index.js"
+      "dev-front": "webpack-dev-server -r dotenv/config --config ./webpack/configuration/development.js"
     },
     "devDependencies": {
       "@babel/core": "^7.2.2",
@@ -87,10 +92,15 @@ const createStructure = answersMap => {
   fs.mkdirSync('./webpack/loaders/')
   fs.mkdirSync('./webpack/plugins/')
   fs.mkdirSync('./webpack/configuration/')
+  fs.mkdirSync('./webpack/build/')
 
+
+  createPackageJSON(answersMap)
   createWebpackLoadersFile(answersMap.loadersAnswers)
-  // createWebpackConfigurationFiles()
-  // createWebpackPluginsFiles()
+  createWebpackConfigurationFile(answersMap.configurationAnswers)
+  createWebpackPluginsFiles(answersMap.pluginsAnswers)
+
+  createWebpackBuildFile()
 
 }
 
