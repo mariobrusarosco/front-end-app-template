@@ -28,7 +28,7 @@ const path = require('path')
 const requireStatements = [
   `const path = require('path')`,
   `const HtmlWebpack = require('html-webpack-plugin')`
-],
+];
 
 // Plugins
 const HtmlWebpackPlugin = `

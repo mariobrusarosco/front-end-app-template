@@ -2,29 +2,16 @@ const fs = require('fs')
 
 const getWebpackCommonLoaders = require('../webpack-definations/common-loaders')
 
-// const createCommonLoadersOldApproach = (loadersAnswers) => {
-//   const commonLoaders = getWebpackCommonLoaders(loadersAnswers)
-//   const normalizedLoaders = inspect(commonLoaders)
-
-//   const loadersFileStream = fs.createWriteStream(
-//     './webpack/loaders/common.js',
-//   );
-
-//   loadersFileStream.write(Buffer.from(`const commonLoaders = ${normalizedLoaders};`))
-//   loadersFileStream.write("\n\nmodule.exports = commonLoaders;")
-
-//   loadersFileStream.end()
-// }
-
 const createCommonLoaders = (loadersAnswers) => {
   const { loaders, requireStatements } = getWebpackCommonLoaders(loadersAnswers)
   const loadersFileStream = fs.createWriteStream(
     './webpack/loaders/common.js',
   );
+  console.log(requireStatements.join(';!'))
   loadersFileStream.write(requireStatements.join(';\n'))
 
-  loadersFileStream.write("const commonLoaders = [\n\t")
-  loadersFileStream.write(loaders.join(','))
+  loadersFileStream.write("\n\nconst commonLoaders = [\n\t")
+  loadersFileStream.write(loaders.join(',\n\t'))
   loadersFileStream.write("\n];")
 
   loadersFileStream.write("\n\nmodule.exports = commonLoaders;")
