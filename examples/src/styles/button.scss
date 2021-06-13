@@ -1,0 +1,14 @@
+.baseStyles {
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+.rounded {
+  border-radius: 10px;
+}
+
+.defaultHover {
+  background-color: darken($primary-color, 0.7);
+}

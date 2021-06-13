@@ -1,0 +1,45 @@
+:global {
+  .slick-slider {
+    position: relative;
+  }
+
+  .slick-slide {
+    display: inline-block;
+  }
+
+  .slick-arrow {
+    position: absolute;
+    bottom: -15px;
+    cursor: pointer;
+    outline: 0;
+    border: 0;
+    background-color: transparent;
+    font-size: 0;
+
+    &:after {
+      position: absolute;
+      color: $primary-color;
+      color: var(--primary-color);
+      border: 1px solid $primary-color;
+      border: 1px solid var(--primary-color);
+      border-radius: 5px;
+      padding: 10px;
+      font-size: 14px;
+    }
+  }
+
+  .slick-prev {
+    left: 0;
+
+    &:after {
+      content: 'Anterior';
+    }
+  }
+  .slick-next {
+    right: 70px;
+
+    &:after {
+      content: 'Próximo';
+    }
+  }
+}
