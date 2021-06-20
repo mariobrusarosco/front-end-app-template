@@ -11,7 +11,7 @@ const yargs = require('yargs')
 const typedCommands = yargs.argv._
 
 if (!typedCommands.length) {
-  return console.log(`Please type 'create galhofa --help' to see the available commands`)
+  console.log(`Please type 'create galhofa --help' to see the available commands`)
 }
 
 module.exports = yargs.argv

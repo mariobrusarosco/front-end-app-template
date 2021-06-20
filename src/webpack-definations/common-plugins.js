@@ -26,7 +26,8 @@
 // Require Statements
 const requireStatements = [
   `const path = require('path')`,
-  `const HtmlWebpack = require('html-webpack-plugin')`
+  `const HtmlWebpack = require('html-webpack-plugin')`,
+  `cosnt webpack = require("webpack")`
 ];
 
 // Plugins
@@ -35,12 +36,18 @@ const HtmlWebpackPlugin = `
     template: path.resolve('src', 'index.html')
   })
 `
+const ProvidePlugin = `
+  new webpack.ProvidePlugin({
+    React: "react"
+  })
+`
 
 const getWebpackCommonPlugins = pluginsAnswers => {
   return {
     requireStatements,
     plugins: [
-      HtmlWebpackPlugin
+      HtmlWebpackPlugin,
+      ProvidePlugin
     ]
   }
 }

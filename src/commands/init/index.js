@@ -30,7 +30,7 @@ const initCommand = yargs.command('init', 'This command start your Front End Bui
 
     // Project Name
     // const projectName = await getProjectName()
-    // answersMap = { ...answersMap, projectName: 'a' }
+    // answersMap = { ...answersMap, projectName }
 
     // console.log('checking package.json', answersMap)
 
@@ -43,7 +43,7 @@ const initCommand = yargs.command('init', 'This command start your Front End Bui
     // Answers to create webpack's loaders
     const loadersAnswers = await gatherLoadersInfo()
       answersMap = { ...answersMap, loadersAnswers }
-      // console.log('----loadersAnswers: ',loadersAnswers)
+      console.log('----loadersAnswers: ',loadersAnswers)
 
       // console.log('waiting for folder creation process ...creating...')
 

@@ -202,9 +202,15 @@ const gatherLoadersInfo = () => {
   return new Promise(async (resolve, reject) => {
     const { willUseFonts } = await askAboutFonts()
 
-    const fontFormats = willUseFonts && await askAboutFontFormats()
+    const fontFormatsAnswers = willUseFonts && await askAboutFontFormats()
+    const stylesPreProcessorsAnswers = false
 
-    resolve(fontFormats)
+    const allAnswersAboutWebpackLoaders = {
+      fontFormatsAnswers,
+      stylesPreProcessorsAnswers
+    }
+
+    resolve({...allAnswersAboutWebpackLoaders})
   })
 }
 

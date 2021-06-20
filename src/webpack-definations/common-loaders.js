@@ -1,10 +1,11 @@
 // Loaders
-const setWebpackLoaderForFonts = (fontFormats) => {
-  const givenFontsFormats = fontFormats
-  const parsedFontsFormats = givenFontsFormats.join('|')
+const setWebpackLoaderForFonts = ({ fontFormats }) => {
+  if(!fontFormats || !fontFormats.length) return null
+
+  const regexForFontFormats = fontFormats.join('|')
 
   return `{
-    test: /\\.(${parsedFontsFormats})$/,
+    test: /\\.(${regexForFontFormats})$/,
     include: path.resolve('src','assets', 'fonts'),
     use: [
       'file-loader'
@@ -42,17 +43,21 @@ const requireStatements = [
 ]
 
 const getWebpackCommonLoaders = loadersAnswers => {
-  const loaderForFonts = setWebpackLoaderForFonts(loadersAnswers.fontFormats)
-  const loaderForScript = setWebpackLoaderForScripts(loadersAnswers.fontFormats)
-  const loaderForStyles = setWebpackLoaderForStyle(loadersAnswers.fontFormats)
+  const loaderForFonts = setWebpackLoaderForFonts(loadersAnswers.fontFormatsAnswers)
+  const loaderForScript = setWebpackLoaderForScripts(loadersAnswers)
+  const loaderForStyles = setWebpackLoaderForStyle(loadersAnswers)
+
+  const allPosibleLoadersConfigs = [
+    loaderForFonts,
+    loaderForScript,
+    loaderForStyles
+  ]
+
+  const allConfiguredLoaders = allPosibleLoadersConfigs.filter(loadersConfig => !!loadersConfig)
 
   return {
     requireStatements,
-    loaders: [
-      loaderForFonts,
-      loaderForScript,
-      loaderForStyles
-    ]
+    loaders: allConfiguredLoaders
   }
 }
 

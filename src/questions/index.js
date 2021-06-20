@@ -36,7 +36,7 @@ const askAboutFontFormats = () => {
     }
   ]
 
-  return inquirer.prompt(fontFormats)
+  return inquirer.prompt(fontFormats) || 1
 }
 
 module.exports = {
