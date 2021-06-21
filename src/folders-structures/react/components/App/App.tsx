@@ -5,8 +5,6 @@ import User from "../User/User";
 import Counter from "../Counter/Counter";
 
 const App: React.FC = () => {
-  console.log("App Component", APPLICATION);
-
   return (
     <main>
       <h1>App Component</h1>

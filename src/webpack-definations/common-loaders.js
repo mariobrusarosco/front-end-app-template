@@ -19,7 +19,13 @@ const setWebpackLoaderForScripts = (scriptFormats) => {
     include: path.resolve('src'),
     exclude: /node_modules/,
     use: 'babel-loader',
-  }`
+  },
+  {
+    test: /\.ts(x)?$/,
+    use: "ts-loader",
+    exclude: /node_modules/
+  }
+  `
 }
 
 const setWebpackLoaderForStyle = (scriptFormats) => {

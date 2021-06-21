@@ -1,6 +1,6 @@
-const path = require('path')
 const inquirer = require('inquirer')
 
+// TODO move all questions to separated files
 const askAboutProjectName = () => {
   const question = [
     {
@@ -12,6 +12,48 @@ const askAboutProjectName = () => {
   return inquirer.prompt(question)
 }
 
+
+// TODO think about a better name
+const askAboutFrameworks = () => {
+  const framework = [
+    {
+      name: 'framework',
+      type: 'checkbox',
+      message: `Choose your framework`,
+      choices: ['React','Angular (But is gonna be React)','Vue (OK, let go with React)', 'Svelte (React it is!)','Vanilla'],
+      default: 'React'
+    }
+  ]
+
+  return inquirer.prompt(framework)
+}
+
+// TODO think about a better name
+const askAboutScripts = () => {
+  const typeOfScript = [
+    {
+      name: 'scripts',
+      type: 'checkbox',
+      message: `Select the file extension for you main script?`,
+      choices: ['js','tsx', 'ts']
+    }
+  ]
+
+  return inquirer.prompt(typeOfScript)
+}
+
+const askAboutClearingCurrentDir = () => {
+  const question = [
+    {
+      name: 'clearCurrentDir',
+      type: 'confirm',
+      message: 'Do you want to clear your folder? You will not be able to undo this...',
+      default: 'no'
+    }
+  ]
+
+  return inquirer.prompt(question)
+}
 
 const askAboutFonts = () => {
   const question = [
@@ -36,7 +78,7 @@ const askAboutFontFormats = () => {
     }
   ]
 
-  return inquirer.prompt(fontFormats) || 1
+  return inquirer.prompt(fontFormats)
 }
 
 module.exports = {
@@ -44,4 +86,7 @@ module.exports = {
   askAboutFonts,
   askAboutFontFormats,
   // askAboutLoaders,
+  askAboutScripts,
+  askAboutFrameworks,
+  askAboutClearingCurrentDir
 }

@@ -12,10 +12,12 @@ const {
 
 // Question Process via Inquirer
 const {
-  verifyExistingProject,
+  verifyEmptyProject,
   getProjectName,
   gatherLoadersInfo,
   createStructure,
+  clearCurrentProjectDir,
+  getProjectConfiguration
 } = require('../../core')
 
 const initCommand = yargs.command('init', 'This command start your Front End Build configuration', yargs => {
@@ -26,31 +28,32 @@ const initCommand = yargs.command('init', 'This command start your Front End Bui
 
     let answersMap = {}
 
-    // await verifyExistingProject()
+    const isProjectEmpty = await verifyEmptyProject()
+    isProjectEmpty && await clearCurrentProjectDir()
 
     // Project Name
-    // const projectName = await getProjectName()
-    // answersMap = { ...answersMap, projectName }
+    const projectName = await getProjectName()
+    answersMap = { ...answersMap, projectName }
+
+
+    const configurationAnswers = await getProjectConfiguration()
+    answersMap = {
+      ...answersMap,
+      configurationAnswers
+    }
 
     // console.log('checking package.json', answersMap)
-
-    // console.log(process.cwd())
-
     // Checking already existing package.json
     // const existsBuildProcess = await verifyPackageJSON()
-      // console.log(`\n`)
 
     // Answers to create webpack's loaders
     const loadersAnswers = await gatherLoadersInfo()
       answersMap = { ...answersMap, loadersAnswers }
-      console.log('----loadersAnswers: ',loadersAnswers)
-
-      // console.log('waiting for folder creation process ...creating...')
+      // console.log('----loadersAnswers: ',loadersAnswers)
 
       await createStructure(answersMap)
-    // console.log(result)
-    // Todo createLConfigFiles()
-    // Todo createLoaders()
+
+    console.log(chalk.green("Done!"))
   })()
 
 })

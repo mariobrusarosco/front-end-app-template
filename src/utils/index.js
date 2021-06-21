@@ -1,4 +1,5 @@
-const path = require('path')
+const { execSync } = require('child_process')
+const chalk = require('chalk')
 
 const mkdirCallback = function(error, cwd) {
   // debugger
@@ -13,7 +14,6 @@ const mkdirCallback = function(error, cwd) {
 const createExternalPackageJSON = (answersMap) => {
   const { projectName } = answersMap
 
-  console.log(answersMap)
 
   const packageJSON = `{
     "name": "${projectName}",
@@ -45,9 +45,13 @@ const createExternalPackageJSON = (answersMap) => {
 
 }
 
-
+const installDependencies = () => {
+  console.log(chalk.green('Installing dependencies...'))
+  execSync('yarn install')
+}
 
 module.exports = {
   mkdirCallback,
-  createExternalPackageJSON
+  createExternalPackageJSON,
+  installDependencies
 }

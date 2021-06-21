@@ -35,6 +35,7 @@ const createCommonConfigurationFile = (configurationAnswers) => {
 
 
 const createWebpackConfigurationFile = (configurationAnswers) => {
+  console.warn({configurationAnswers})
   createCommonConfigurationFile(configurationAnswers)
   createDevelopmentConfigurationFile(configurationAnswers)
   // createProductionConfigurationFile(configurationAnswers)

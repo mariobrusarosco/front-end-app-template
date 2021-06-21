@@ -21,6 +21,9 @@ const createPackageJSON = (answersMap) => {
       "@babel/polyfill": "^7.2.5",
       "@babel/preset-env": "^7.2.3",
       "@babel/preset-react": "^7.0.0",
+      "@types/react": "^16.9.26",
+      "@types/react-dom": "^16.9.5",
+      "@types/styled-components": "^5.0.1",
       "babel-loader": "^8.2.2",
       "clean-webpack-plugin": "^1.0.0",
       "compression-webpack-plugin": "^2.0.0",
@@ -29,9 +32,17 @@ const createPackageJSON = (answersMap) => {
       "file-loader": "^6.2.0",
       "html-webpack-plugin": "^3.2.0",
       "style-loader": "^2.0.0",
+      "ts-loader": "^6.2.1",
+      "react-hot-loader": "^4.12.20",
+      "typescript": "^3.8.3",
       "webpack": "^4.26.0",
       "webpack-cli": "^3.1.2",
       "webpack-dev-server": "^3.1.10"
+    },
+    "dependencies": {
+      "react": "^16.13.1",
+      "react-dom": "npm:@hot-loader/react-dom",
+      "styled-components": "^5.0.1"
     }
   }`
 

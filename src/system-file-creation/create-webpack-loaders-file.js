@@ -7,7 +7,6 @@ const createCommonLoaders = (loadersAnswers) => {
   const loadersFileStream = fs.createWriteStream(
     './webpack/loaders/common.js',
   );
-  console.log(requireStatements.join(';!'))
   loadersFileStream.write(requireStatements.join(';\n'))
 
   loadersFileStream.write("\n\nconst commonLoaders = [\n\t")

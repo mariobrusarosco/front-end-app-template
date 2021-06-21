@@ -1,20 +1,22 @@
-const fs = require('fs')
+const fs = require('fs-extra')
 const rimraf = require('rimraf')
 const mkdirp = require('mkdirp')
 const path = require('path')
 const chalk = require('chalk')
 
-
+// TODO export those requires via index
 const createWebpackLoadersFile = require('../system-file-creation/create-webpack-loaders-file')
 const createWebpackConfigurationFile = require('../system-file-creation/create-webpack-configuration-file')
 const createWebpackPluginsFiles = require('../system-file-creation/create-webpack-plugins-file')
 const createWebpackBuildFile = require('../system-file-creation/create-webpack-build-file')
 const createPackageJSON = require('../system-file-creation/create-package-json')
+const createProjectStructure = require('../system-file-creation/create-project-structure')
 
 // Utils
 const {
   createCommonLoaders,
   mkdirCallback,
+  installDependencies
 } = require('../utils')
 
 // Question(s)
@@ -22,6 +24,8 @@ const {
   askAboutProjectName,
   askAboutFonts,
   askAboutFontFormats,
+  askAboutClearingCurrentDir,
+  askAboutScripts
 } = require('../questions')
 
 const getProjectName = () => {
@@ -36,56 +40,38 @@ const getProjectName = () => {
   })
 }
 
-const verifyExistingProject = () => {
+const clearCurrentProjectDir = () => new Promise(async (resolve) => {
+  const { clearCurrentDir } = await askAboutClearingCurrentDir()
 
-  return new Promise(async (resolve) => {
+  if(clearCurrentDir) {
     const cwd = process.cwd()
-    const cwdContent = fs.readdirSync(cwd)
 
-    if (cwdContent.length) {
-      console.log(chalk.red('Your Project Folder (root folder) must be empty. Help me here, please!'))
-      process.exit(-1)
-    }
+    fs.emptyDir(cwd, err => {
+      if (err) return console.error(err)
+    })
+    return resolve()
+  }
 
-    resolve()
-  })
-}
+  process.exit(-1)
+})
 
-const createStructure = answersMap => {
-  // console.log('----createStructure / answersMap: ',answersMap)
-
+const verifyEmptyProject = () => new Promise(async (resolve) => {
   const cwd = process.cwd()
+  const cwdContent = fs.readdirSync(cwd)
 
-  const packageJSON = `{
-    "name": "${answersMap.projectName}",
-    "version": "0.0.0",
-    "description": "${answersMap.projectName}",
-    "private": true,
-    "scripts": {
-      "dev-front": "webpack-dev-server -r dotenv/config --config ./webpack/configuration/development.js"
-    },
-    "devDependencies": {
-      "@babel/core": "^7.2.2",
-      "@babel/plugin-proposal-class-properties": "^7.3.3",
-      "@babel/plugin-proposal-optional-chaining": "^7.2.0",
-      "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-      "@babel/plugin-transform-async-to-generator": "^7.2.0",
-      "@babel/plugin-transform-runtime": "^7.2.0",
-      "@babel/polyfill": "^7.2.5",
-      "@babel/preset-env": "^7.2.3",
-      "@babel/preset-react": "^7.0.0",
-      "clean-webpack-plugin": "^1.0.0",
-      "compression-webpack-plugin": "^2.0.0",
-      "css-loader": "^1.0.1",
-      "dotenv": "^6.2.0",
-      "html-webpack-plugin": "^3.2.0",
-      "webpack": "^4.26.0",
-      "webpack-cli": "^3.1.2",
-      "webpack-dev-server": "^3.1.10"
-    }
-  }`
+  if (cwdContent.length) {
+    console.log(chalk.red('Your Project Folder (root folder) must be empty. Help me here, please!'))
 
-  fs.writeFileSync(`${cwd}/package.json`, packageJSON, 'utf-8')
+    resolve(true)
+  }
+
+  resolve(false)
+})
+
+const createStructure = async answersMap => {
+  // console.log('----createStructure / answersMap: ',answersMap)
+  console.log(chalk.green('Creating template structure...'))
+
   rimraf.sync('./webpack')
 
   fs.mkdirSync('./webpack/')
@@ -102,6 +88,9 @@ const createStructure = answersMap => {
 
   createWebpackBuildFile()
 
+  await createProjectStructure()
+
+  installDependencies()
 }
 
     // fs.writeFileSync('./webpack/configuration/development/index.js', developmentConfig('/'), 'utf-8')
@@ -196,6 +185,15 @@ const createStructure = answersMap => {
 
 
 
+const getProjectConfiguration = () => new Promise(async (resolve) => {
+  const scriptsAnswers = await askAboutScripts()
+  console.log({ scriptsAnswers })
+
+  const allAnswersAboutConfiguration = {
+    scriptsAnswers,
+  }
+  resolve({...allAnswersAboutConfiguration })
+})
 
 
 const gatherLoadersInfo = () => {
@@ -216,8 +214,10 @@ const gatherLoadersInfo = () => {
 
 module.exports = {
   getProjectName,
-  verifyExistingProject,
+  verifyEmptyProject,
   gatherLoadersInfo,
   askAboutFontFormats,
-  createStructure
+  createStructure,
+  clearCurrentProjectDir,
+  getProjectConfiguration
 }

@@ -1,11 +1,13 @@
 const path = require('path')
 
 const getWebpackCommonConfiguration = configurationAnswers => {
+  const { scriptsAnswers: { scripts } }  = configurationAnswers
+  const targeScript = scripts.join('')
 
   return {
     entry: {
       'main': [
-        './src/index.js'
+        `./src/index.${targeScript}`
       ],
     },
     resolve: {
