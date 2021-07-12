@@ -3,5 +3,5 @@
 Command:
 
 ```sh
-$ yarn global add create-galhofa
+$ yarn global add front-end-template
 ```
