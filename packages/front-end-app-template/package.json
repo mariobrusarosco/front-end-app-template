@@ -3,18 +3,22 @@
   "version": "0.0.0",
   "author": "Mario Brusarosco",
   "bin": {
-    "create-template": "./bin/run"
+    "app-template": "./bin/run"
   },
   "bugs": "https://github.com/front-end-app-template/front-end-app-template/issues",
   "dependencies": {
     "@oclif/command": "^1",
     "@oclif/config": "^1",
     "@oclif/plugin-help": "^3",
-    "tslib": "^1"
+    "cosmiconfig": "^7.0.0",
+    "tslib": "^1",
+    "yargs": "^17.0.1"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1",
     "@types/node": "^10",
+    "@types/yargs": "^17.0.2",
+    "copy-template-dir": "^1.4.0",
     "eslint": "^5.13",
     "eslint-config-oclif": "^3.1",
     "eslint-config-oclif-typescript": "^0.1",
@@ -42,7 +46,8 @@
     "posttest": "eslint . --ext .ts --config .eslintrc",
     "prepack": "rm -rf lib && tsc -b && oclif-dev readme",
     "test": "echo NO TESTS",
-    "version": "oclif-dev readme && git add README.md"
+    "version": "oclif-dev readme && git add README.md",
+    "build": "tsc"
   },
   "types": "lib/index.d.ts"
 }
