@@ -1,5 +1,29 @@
 #!/usr/bin/env node
 
-console.log("Starting Front End Template")
+const path = require('path')
+const tsConfig = path.join(__dirname, '../tsconfig.json')
+const devMode = process.env.DEV_MODE
 
-// require('./lib/index.js')
+
+
+if(devMode) {
+  console.log("Starting Front End Template - Development mode")
+  require('ts-node').register(tsConfig)
+  require('../src')
+} else {
+
+  console.log("Starting Front End Template")
+  require('../lib')
+}
+
+
+
+
+// if (dev) {
+//   require('ts-node').register({project})
+// }
+
+// require(`../${dev ? 'src' : 'lib'}`).run()
+// .catch(require('@oclif/errors/handle'))
+
+

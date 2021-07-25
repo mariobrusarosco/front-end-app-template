@@ -1,6 +1,6 @@
 {
   "name": "front-end-app-template",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Mario Brusarosco",
   "bin": {
     "app-template": "./bin/run"
