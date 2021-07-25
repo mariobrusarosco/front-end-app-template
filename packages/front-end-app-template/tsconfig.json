@@ -2,13 +2,16 @@
   "compilerOptions": {
     "declaration": true,
     "importHelpers": true,
-    "module": "commonjs",
+    "module": "ES6",
     "outDir": "lib",
     "rootDir": "src",
     "strict": false,
-    "target": "es2017"
+    "target": "es2017",
   },
   "include": [
     "src/**/*"
+  ],
+  "exclude": [
+    "src/templates"
   ]
 }

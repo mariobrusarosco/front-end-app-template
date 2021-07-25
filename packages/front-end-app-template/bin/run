@@ -4,12 +4,11 @@ const path = require('path')
 const tsConfig = path.join(__dirname, '../tsconfig.json')
 const devMode = process.env.DEV_MODE
 
-
-
 if(devMode) {
   console.log("Starting Front End Template - Development mode")
+
   require('ts-node').register(tsConfig)
-  require('../src')
+  require('../src').default.argv
 } else {
 
   console.log("Starting Front End Template")

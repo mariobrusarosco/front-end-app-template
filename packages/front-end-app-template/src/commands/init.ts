@@ -1,18 +1,20 @@
+import yargs from "yargs"
+import { AvailableCommands } from "./enums"
+import { Command } from "./interfaces"
 
+console.log("starting the init command!!!")
 
-export module App {
-  export class SomeClass {
-    getName(): string {
-      return 'name';
-    }
-  }
-  export class OtherClass {
-    getName(): string {
-      return 'name';
-    }
-  }
+const run = () => {
+  console.log("Initializing your project")
 }
 
+const initCommand: Command = [
+  AvailableCommands.INIT,
+  "Initialize your project",
+  run
+]
+
+export default initCommand
 
 // const yargs = require("yargs");
 // const path = require("path");
