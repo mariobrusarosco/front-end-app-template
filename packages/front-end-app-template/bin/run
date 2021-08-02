@@ -10,19 +10,6 @@ if(devMode) {
   require('ts-node').register(tsConfig)
   require('../src').default.argv
 } else {
-
   console.log("Starting Front End Template")
-  require('../lib')
+  require('../lib').default.argv
 }
-
-
-
-
-// if (dev) {
-//   require('ts-node').register({project})
-// }
-
-// require(`../${dev ? 'src' : 'lib'}`).run()
-// .catch(require('@oclif/errors/handle'))
-
-

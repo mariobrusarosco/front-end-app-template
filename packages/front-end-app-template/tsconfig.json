@@ -2,11 +2,10 @@
   "compilerOptions": {
     "declaration": true,
     "importHelpers": true,
-    "module": "ES6",
+    "module": "commonjs",
     "outDir": "lib",
     "rootDir": "src",
     "strict": false,
-    "target": "es2017",
   },
   "include": [
     "src/**/*"
