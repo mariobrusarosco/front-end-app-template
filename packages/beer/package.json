@@ -5,7 +5,7 @@
   "bin": {
     "beer": "./bin/run"
   },
-  "bugs": "https://github.com/mariobrusarosco/beer/issues",
+  "bugs": "https://github.com/mariobrusarosco/my-beer/issues",
   "dependencies": {
     "@types/chai": "^4.2.21",
     "@types/yargs": "^17.0.2",
@@ -36,13 +36,13 @@
     "/bin",
     "/lib"
   ],
-  "homepage": "https://github.com/mariobrusarosco/beer",
+  "homepage": "https://github.com/mariobrusarosco/my-beer",
   "keywords": [
     "beer"
   ],
   "license": "MIT",
   "main": "lib/index.js",
-  "repository": "front-end-app-template/front-end-app-template",
+  "repository": "mariobrusarosco/my-beer",
   "scripts": {
     "posttest": "eslint . --ext .ts --config .eslintrc",
     "build": "tsc",
