@@ -1,15 +1,12 @@
 {
-  "name": "front-end-app-template",
+  "name": "my-beer",
   "version": "0.0.1",
   "author": "Mario Brusarosco",
   "bin": {
-    "app-template": "./bin/run"
+    "beer": "./bin/run"
   },
-  "bugs": "https://github.com/front-end-app-template/front-end-app-template/issues",
+  "bugs": "https://github.com/mariobrusarosco/beer/issues",
   "dependencies": {
-    "@oclif/command": "^1",
-    "@oclif/config": "^1",
-    "@oclif/plugin-help": "^3",
     "@types/chai": "^4.2.21",
     "@types/yargs": "^17.0.2",
     "cosmiconfig": "^7.0.0",
@@ -19,8 +16,6 @@
   },
   "devDependencies": {
     "@jest/types": "^27.0.6",
-    "@oclif/dev-cli": "^1",
-    "@oclif/test": "^1.2.8",
     "@types/inquirer": "^7.3.3",
     "@types/jest": "^26.0.24",
     "@types/node": "^16.4.13",
@@ -41,20 +36,15 @@
     "/bin",
     "/lib"
   ],
-  "homepage": "https://github.com/front-end-app-template/front-end-app-template",
+  "homepage": "https://github.com/mariobrusarosco/beer",
   "keywords": [
-    "oclif"
+    "beer"
   ],
   "license": "MIT",
   "main": "lib/index.js",
-  "oclif": {
-    "bin": "create-template"
-  },
   "repository": "front-end-app-template/front-end-app-template",
   "scripts": {
     "posttest": "eslint . --ext .ts --config .eslintrc",
-    "prepack": "rm -rf lib && tsc -b && oclif-dev readme",
-    "version": "oclif-dev readme && git add README.md",
     "build": "tsc",
     "test": "jest"
   },
