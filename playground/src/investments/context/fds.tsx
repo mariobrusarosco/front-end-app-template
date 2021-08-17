@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-const asdssa = () => {
+const fdsContext = () => {
   return <div>lorem</div>
 }
 
-export default asdssa
+export default fdsContext

@@ -1,17 +1,11 @@
-import Inquirer  from "inquirer"
-
-// TODO move all questions to separated files
-const askAboutProjectName = () => {
-  const question = [
-    {
-      name: "projectName",
-      type: "input",
-      message: "Type your projects name",
-    },
-  ];
-  return Inquirer.prompt(question);
-};
+import { projectName } from "./projectName";
+import { domainName } from "./domainName";
+import { reactElementType } from "./reactElementType";
+import { reactElementName } from "./reactElementName";
 
 export default {
-  askAboutProjectName,
+  askAboutProjectName: projectName,
+  askAboutDomainName: domainName,
+  askAboutReactElementType: reactElementType,
+  askAboutReactElementName: reactElementName,
 };

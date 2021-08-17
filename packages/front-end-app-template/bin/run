@@ -9,10 +9,10 @@ if(isDevMode) {
   console.log("Starting Front End Template - Development mode")
 
   require('ts-node').register({ project: tsConfig })
-  require('../src').default.argv
+  require('../src').default
 
 } else {
   console.log("Starting Front End Template")
 
-  return require('../lib').default.argv
+  return require('../lib').default
 }

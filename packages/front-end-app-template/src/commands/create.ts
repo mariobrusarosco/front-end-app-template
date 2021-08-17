@@ -1,38 +1,44 @@
-import path from "path"
+import path from "path";
 import core from "../core";
-import { AvailableCommands } from "./enums"
-import { CLICommand } from "./interfaces"
-import { hideBin } from 'yargs/helpers'
-const copy = require("copy-template-dir")
+import { AvailableCommands } from "./enums";
+import { CLICommand } from "./interfaces";
+import { hideBin } from "yargs/helpers";
+const copy = require("copy-template-dir");
 
 const run = async () => {
-  console.log("creating your React component")
-  const typedCommands =  hideBin(process.argv)
+  console.log("creating your React component");
+  const typedCommands = hideBin(process.argv);
 
+  // const projectName = await core.getProjectName();
+  const domainName = await core.getDomainName();
+  const reactStructure = await core.getReactElement({ domainName });
 
-  // Project Name
-  const projectName = await core.getProjectName();
-  console.log("Creating template", projectName);
+  console.log({
+    domainName,
+    reactStructure,
+  });
 
-    const inDir = path.resolve(__dirname, "../templates/react/function-component");
-    const outDir = path.join(process.cwd(), "src", "components");
+  const vars = { reactElementName: reactStructure.reactElementName };
 
-    const vars = { componentName: projectName };
-
-    copy(inDir, outDir, vars, (err: Error, createdFiles: string[]) => {
+  copy(
+    reactStructure.inDir,
+    reactStructure.outDir,
+    vars,
+    (err: Error, createdFiles: string[]) => {
       if (err) throw err;
       createdFiles.forEach((filePath) => console.log(`Created ${filePath}`));
       console.log("done!");
-    });
-}
+    }
+  );
+};
 
 const createCommand: CLICommand = {
   command: AvailableCommands.CREATE,
   describe: "Creates a react component",
-  handler: run
-}
+  handler: run,
+};
 
-export default createCommand
+export default createCommand;
 
 // const path = require("path");
 // const copy = require("copy-template-dir");
