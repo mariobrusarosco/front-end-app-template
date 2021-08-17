@@ -10,5 +10,6 @@ export const reactElementType = () => {
       choices: Object.values(ReactElementTypes),
     },
   ];
+
   return Inquirer.prompt(question);
 };

@@ -1,35 +1,39 @@
-import path from "path";
+import chalk from "chalk";
 import core from "../core";
 import { AvailableCommands } from "./enums";
 import { CLICommand } from "./interfaces";
-import { hideBin } from "yargs/helpers";
+import questions from "../questions";
 const copy = require("copy-template-dir");
 
 const run = async () => {
-  console.log("creating your React component");
-  const typedCommands = hideBin(process.argv);
+  console.log(chalk.green("Creating your React Element...\n"));
 
-  // const projectName = await core.getProjectName();
-  const domainName = await core.getDomainName();
-  const reactStructure = await core.getReactElement({ domainName });
+  const { domainName } = await questions.askAboutDomainName();
+  const { reactElementType } = await questions.askAboutReactElementType();
+  const { reactElementName } = await questions.askAboutReactElementName();
 
-  console.log({
+  const { inDir, outDir } = await core.getReactElement({
     domainName,
-    reactStructure,
+    reactElementType,
+    reactElementName,
   });
 
-  const vars = { reactElementName: reactStructure.reactElementName };
+  // console.log({
+  //   domainName,
+  //   reactElementType,
+  //   reactElementName,
+  //   reactStructure,
+  // });
 
-  copy(
-    reactStructure.inDir,
-    reactStructure.outDir,
-    vars,
-    (err: Error, createdFiles: string[]) => {
-      if (err) throw err;
-      createdFiles.forEach((filePath) => console.log(`Created ${filePath}`));
-      console.log("done!");
-    }
-  );
+  const vars = { reactElementName };
+
+  copy(inDir, outDir, vars, (err: Error, createdFiles: string[]) => {
+    if (err) throw err;
+    createdFiles.forEach((filePath) =>
+      console.log(chalk.red(`Created ${filePath}`))
+    );
+    console.log(chalk.greenBright("\nDone!\n"));
+  });
 };
 
 const createCommand: CLICommand = {

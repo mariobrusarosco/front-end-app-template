@@ -1,21 +1,25 @@
 import questions from "../questions";
 import chalk from "chalk";
-import { generateStructure, ReactStructure } from "../react-structures";
+import {
+  generateStructure,
+  ReactElementTypes,
+  ReactStructure,
+} from "../react-structures";
 
-const getProjectName = () => {
-  return new Promise<string>(async (resolve, _) => {
-    const { projectName } = await questions.askAboutProjectName();
+// const getProjectName = () => {
+//   return new Promise<string>(async (resolve, _) => {
+//     const { projectName } = await questions.askAboutProjectName();
 
-    if (!projectName) {
-      console.log(
-        `You must provide a name for your project to continue the process`
-      );
+//     if (!projectName) {
+//       console.log(
+//         `You must provide a name for your project to continue the process`
+//       );
 
-      process.exit(-1);
-    }
-    resolve(projectName);
-  });
-};
+//       process.exit(-1);
+//     }
+//     resolve(projectName);
+//   });
+// };
 
 const getDomainName = () => {
   return new Promise<string>(async (resolve, _) => {
@@ -60,8 +64,24 @@ export const getReactElement = ({ domainName }: { domainName: string }) => {
   });
 };
 
+export const getReactElementApproachTwo = ({
+  domainName,
+  reactElementType,
+  reactElementName,
+}: {
+  domainName: string;
+  reactElementType: ReactElementTypes;
+  reactElementName: string;
+}) => {
+  return generateStructure({
+    domainName,
+    reactElementType,
+    reactElementName: reactElementName.trim(),
+  });
+};
+
 export default {
-  getProjectName,
+  // getProjectName,
   getDomainName,
-  getReactElement,
+  getReactElement: getReactElementApproachTwo,
 };
