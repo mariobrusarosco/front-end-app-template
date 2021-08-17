@@ -5,10 +5,12 @@
     "module": "commonjs",
     "outDir": "lib",
     "rootDir": "src",
-    "strict": false,
+    "strict": true,
+    "esModuleInterop": true
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "global.d.ts"
   ],
   "exclude": [
     "src/templates"

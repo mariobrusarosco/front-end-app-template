@@ -1,4 +1,4 @@
-const questions = require("../questions");
+import questions from "../questions"
 
 const getProjectName = () => {
   return new Promise(async (resolve, _) => {
@@ -15,6 +15,6 @@ const getProjectName = () => {
   });
 };
 
-module.exports = {
+export default {
   getProjectName,
 };

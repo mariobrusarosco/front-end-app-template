@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-const uiContext = () => {
+const Modal = () => {
   return <div>lorem</div>
 }
 
-export default uiContext
+export default Modal

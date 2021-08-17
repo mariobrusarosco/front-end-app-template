@@ -1,16 +1,36 @@
-import yargs from "yargs"
+import path from "path"
+import core from "../core";
 import { AvailableCommands } from "./enums"
-import { Command } from "./interfaces"
+import { CLICommand } from "./interfaces"
+import { hideBin } from 'yargs/helpers'
+const copy = require("copy-template-dir")
 
-const run = () => {
+const run = async () => {
   console.log("creating your React component")
+  const typedCommands =  hideBin(process.argv)
+
+
+  // Project Name
+  const projectName = await core.getProjectName();
+  console.log("Creating template", projectName);
+
+    const inDir = path.resolve(__dirname, "../templates/react/function-component");
+    const outDir = path.join(process.cwd(), "src", "components");
+
+    const vars = { componentName: projectName };
+
+    copy(inDir, outDir, vars, (err: Error, createdFiles: string[]) => {
+      if (err) throw err;
+      createdFiles.forEach((filePath) => console.log(`Created ${filePath}`));
+      console.log("done!");
+    });
 }
 
-const createCommand: Command = [
-  AvailableCommands.CREATE,
-  "Creates a react component",
-  run
-]
+const createCommand: CLICommand = {
+  command: AvailableCommands.CREATE,
+  describe: "Creates a react component",
+  handler: run
+}
 
 export default createCommand
 

@@ -2,14 +2,17 @@
 
 const path = require('path')
 const tsConfig = path.join(__dirname, '../tsconfig.json')
-const devMode = process.env.DEV_MODE
+const isDevMode = process.env.DEV_MODE == "true"
 
-if(devMode) {
+
+if(isDevMode) {
   console.log("Starting Front End Template - Development mode")
 
-  require('ts-node').register(tsConfig)
+  require('ts-node').register({ project: tsConfig })
   require('../src').default.argv
+
 } else {
   console.log("Starting Front End Template")
-  require('../lib').default.argv
+
+  return require('../lib').default.argv
 }

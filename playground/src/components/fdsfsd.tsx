@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-const marioContext = () => {
+const fdsfsd = () => {
   return <div>lorem</div>
 }
 
-export default marioContext
+export default fdsfsd

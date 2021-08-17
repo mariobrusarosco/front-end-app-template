@@ -2,11 +2,10 @@ import yargs from "yargs";
 import { hideBin } from 'yargs/helpers'
 
 
-// import initCommand from "./commands/init"
+import initCommand from "./commands/init"
 import createCommand from "./commands/create"
 
 const typedCommands =  hideBin(process.argv)
-console.log("starting the init command!!", typedCommands)
 
 if (!typedCommands.length) {
   console.log(
@@ -15,14 +14,6 @@ if (!typedCommands.length) {
 }
 
 
-export default yargs(typedCommands).command(...createCommand)
-
-
-
-
-
-
-
-
-
-console.log({ yargs });
+yargs(typedCommands)
+  .command(createCommand)
+  .command(initCommand).help().argv

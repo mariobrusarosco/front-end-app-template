@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-const auth = () => {
+const asdssa = () => {
   return <div>lorem</div>
 }
 
-export default auth
+export default asdssa

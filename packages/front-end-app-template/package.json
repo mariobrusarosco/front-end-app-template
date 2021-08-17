@@ -10,19 +10,27 @@
     "@oclif/command": "^1",
     "@oclif/config": "^1",
     "@oclif/plugin-help": "^3",
+    "@types/chai": "^4.2.21",
     "@types/yargs": "^17.0.2",
     "cosmiconfig": "^7.0.0",
+    "jest": "^27.0.6",
     "tslib": "^1",
     "yargs": "^17.0.1"
   },
   "devDependencies": {
+    "@jest/types": "^27.0.6",
     "@oclif/dev-cli": "^1",
-    "@types/node": "^10",
+    "@oclif/test": "^1.2.8",
+    "@types/inquirer": "^7.3.3",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^16.4.13",
     "@types/yargs": "^17.0.2",
+    "chai": "^4.3.4",
     "copy-template-dir": "^1.4.0",
     "eslint": "^5.13",
     "eslint-config-oclif": "^3.1",
     "eslint-config-oclif-typescript": "^0.1",
+    "ts-jest": "^27.0.4",
     "ts-node": "^8",
     "typescript": "^3.3"
   },
@@ -46,9 +54,9 @@
   "scripts": {
     "posttest": "eslint . --ext .ts --config .eslintrc",
     "prepack": "rm -rf lib && tsc -b && oclif-dev readme",
-    "test": "echo NO TESTS",
     "version": "oclif-dev readme && git add README.md",
-    "build": "tsc"
+    "build": "tsc",
+    "test": "jest"
   },
   "types": "lib/index.d.ts"
 }

@@ -1,4 +1,6 @@
 export enum AvailableCommands {
-  INIT = "init",
+  INIT = "mount",
   CREATE = "create",
 }
+
+export const CLI_MAIN_COMMAND = "app-template"

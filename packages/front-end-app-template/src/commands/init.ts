@@ -1,18 +1,17 @@
 import yargs from "yargs"
 import { AvailableCommands } from "./enums"
-import { Command } from "./interfaces"
+import { CLICommand } from "./interfaces"
 
-console.log("starting the init command!!!")
 
-const run = () => {
+const run = async () => {
   console.log("Initializing your project")
 }
 
-const initCommand: Command = [
-  AvailableCommands.INIT,
-  "Initialize your project",
-  run
-]
+const initCommand: CLICommand = {
+  command: AvailableCommands.INIT,
+  describe: "Initialize your project",
+  handler: run
+}
 
 export default initCommand
 

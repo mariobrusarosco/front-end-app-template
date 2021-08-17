@@ -1,4 +1,4 @@
-const inquirer = require("inquirer");
+import Inquirer  from "inquirer"
 
 // TODO move all questions to separated files
 const askAboutProjectName = () => {
@@ -9,9 +9,9 @@ const askAboutProjectName = () => {
       message: "Type your projects name",
     },
   ];
-  return inquirer.prompt(question);
+  return Inquirer.prompt(question);
 };
 
-module.exports = {
+export default {
   askAboutProjectName,
 };
