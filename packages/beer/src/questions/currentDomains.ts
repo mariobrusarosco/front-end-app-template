@@ -21,7 +21,7 @@ const searchForDomains = (answers: any, input: any = "") => {
   });
 };
 
-export const domainName = () => {
+export const currentDomains = () => {
   const question = [
     {
       name: "domainName",

@@ -18,23 +18,23 @@ import { ReactElementTypes } from "../react-elements/enums";
 //   });
 // };
 
-const getDomainName = () => {
-  return new Promise<string>(async (resolve, _) => {
-    const { domainName } = await questions.askAboutDomainName();
+// const getDomainName = () => {
+//   return new Promise<string>(async (resolve, _) => {
+//     const { domainName } = await questions.askAboutDomainName();
 
-    if (!domainName) {
-      console.log(
-        chalk.red(
-          `You must provide a name for the domain of your project to continue the process`
-        )
-      );
+//     if (!domainName) {
+//       console.log(
+//         chalk.red(
+//           `You must provide a name for the domain of your project to continue the process`
+//         )
+//       );
 
-      process.exit(-1);
-    }
+//       process.exit(-1);
+//     }
 
-    resolve(domainName);
-  });
-};
+//     resolve(domainName);
+//   });
+// };
 
 // export const getReactElement = ({ domainName }: { domainName: string }) => {
 //   return new Promise<ReactStructure>(async (resolve, _) => {
@@ -72,20 +72,8 @@ export const getReactElementMetadata = ({
 }) =>
   generateElementMetadata({ domainName, reactElementName, reactElementType });
 
-// export const generateHookMetadata = ({
-//   domainName,
-//   reactElementName,
-// }: Props): ReactStructure => {
-
-//   return {
-//     destinationFolder,
-//     templateFolder,
-//     reactElementName,
-//   };
-// };
-
 export default {
   // getProjectName,
-  getDomainName,
+  // getDomainName,
   getReactElementMetadata,
 };

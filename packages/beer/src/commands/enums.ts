@@ -1,6 +1,7 @@
 export enum AvailableCommands {
   INIT = "mount",
-  CREATE = "create",
+  CREATE = "create element",
+  NEW_DOMAIN = "new domain",
 }
 
-export const CLI_MAIN_COMMAND = "app-template"
+export const CLI_MAIN_COMMAND = "beer";

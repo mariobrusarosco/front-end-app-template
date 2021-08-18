@@ -1,11 +1,13 @@
 import { projectName } from "./projectName";
-import { domainName } from "./domainName";
+import { currentDomains } from "./currentDomains";
 import { reactElementType } from "./reactElementType";
 import { reactElementName } from "./reactElementName";
+import { newDomainName } from "./newDomainName";
 
 export default {
   askAboutProjectName: projectName,
-  askAboutDomainName: domainName,
+  askAboutNewDomainName: newDomainName,
+  askAboutCurrentDomains: currentDomains,
   askAboutReactElementType: reactElementType,
   askAboutReactElementName: reactElementName,
 };
