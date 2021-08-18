@@ -12,11 +12,14 @@ const run = async () => {
   const { reactElementType } = await questions.askAboutReactElementType();
   const { reactElementName } = await questions.askAboutReactElementName();
 
-  const { inDir, outDir } = await core.getReactElement({
-    domainName,
-    reactElementType,
-    reactElementName,
-  });
+  console.log({ domainName, reactElementType, reactElementName });
+
+  const { destinationFolder, templateFolder } =
+    await core.getReactElementMetadata({
+      domainName,
+      reactElementType,
+      reactElementName,
+    });
 
   // console.log({
   //   domainName,
@@ -25,15 +28,20 @@ const run = async () => {
   //   reactStructure,
   // });
 
-  const vars = { reactElementName };
+  const vars = { reactElementName, domainName };
 
-  copy(inDir, outDir, vars, (err: Error, createdFiles: string[]) => {
-    if (err) throw err;
-    createdFiles.forEach((filePath) =>
-      console.log(chalk.red(`Created ${filePath}`))
-    );
-    console.log(chalk.greenBright("\nDone!\n"));
-  });
+  copy(
+    templateFolder,
+    destinationFolder,
+    vars,
+    (err: Error, createdFiles: string[]) => {
+      if (err) throw err;
+      createdFiles.forEach((filePath) =>
+        console.log(chalk.red(`Created ${filePath}`))
+      );
+      console.log(chalk.greenBright("\nDone!\n"));
+    }
+  );
 };
 
 const createCommand: CLICommand = {

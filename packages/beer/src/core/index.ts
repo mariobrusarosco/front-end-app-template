@@ -1,10 +1,7 @@
 import questions from "../questions";
 import chalk from "chalk";
-import {
-  generateStructure,
-  ReactElementTypes,
-  ReactStructure,
-} from "../react-structures";
+import { elementsMetadata, generateElementMetadata } from "../react-elements";
+import { ReactElementTypes } from "../react-elements/enums";
 
 // const getProjectName = () => {
 //   return new Promise<string>(async (resolve, _) => {
@@ -39,49 +36,56 @@ const getDomainName = () => {
   });
 };
 
-export const getReactElement = ({ domainName }: { domainName: string }) => {
-  return new Promise<ReactStructure>(async (resolve, _) => {
-    const { reactElementType } = await questions.askAboutReactElementType();
-    const { reactElementName } = await questions.askAboutReactElementName();
+// export const getReactElement = ({ domainName }: { domainName: string }) => {
+//   return new Promise<ReactStructure>(async (resolve, _) => {
+//     const { reactElementType } = await questions.askAboutReactElementType();
+//     const { reactElementName } = await questions.askAboutReactElementName();
 
-    if (!reactElementName) {
-      console.log(
-        chalk.red(
-          "You must provide a name for your react structure e.g Hook, Function Component..."
-        )
-      );
+//     if (!reactElementName) {
+//       console.log(
+//         chalk.red(
+//           "You must provide a name for your react structure e.g Hook, Function Component..."
+//         )
+//       );
 
-      process.exit(-1);
-    }
+//       process.exit(-1);
+//     }
 
-    const structure = generateStructure({
-      domainName,
-      reactElementType,
-      reactElementName: reactElementName.trim(),
-    });
+//     const structure = generateStructure({
+//       domainName,
+//       reactElementType,
+//       reactElementName: reactElementName.trim(),
+//     });
 
-    resolve(structure);
-  });
-};
+//     resolve(structure);
+//   });
+// };
 
-export const getReactElementApproachTwo = ({
-  domainName,
+export const getReactElementMetadata = ({
   reactElementType,
+  domainName,
   reactElementName,
 }: {
-  domainName: string;
   reactElementType: ReactElementTypes;
-  reactElementName: string;
-}) => {
-  return generateStructure({
-    domainName,
-    reactElementType,
-    reactElementName: reactElementName.trim(),
-  });
-};
+  domainName: ReactElementTypes;
+  reactElementName: ReactElementTypes;
+}) =>
+  generateElementMetadata({ domainName, reactElementName, reactElementType });
+
+// export const generateHookMetadata = ({
+//   domainName,
+//   reactElementName,
+// }: Props): ReactStructure => {
+
+//   return {
+//     destinationFolder,
+//     templateFolder,
+//     reactElementName,
+//   };
+// };
 
 export default {
   // getProjectName,
   getDomainName,
-  getReactElement: getReactElementApproachTwo,
+  getReactElementMetadata,
 };

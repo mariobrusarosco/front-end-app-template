@@ -1,5 +1,5 @@
 import Inquirer from "inquirer";
-import { ReactElementTypes } from "../react-structures";
+import { ReactElementTypes } from "../react-elements/enums";
 
 export const reactElementType = () => {
   const question = [

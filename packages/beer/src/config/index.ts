@@ -4,22 +4,21 @@ import path from "path";
 var toml = require("toml");
 var fs = require("fs");
 
+const cwd = process.cwd();
+
 const getDomainsFolders = (domainsPath: string) => {
   return fs.readdirSync(path.join(process.cwd(), domainsPath));
 };
 
 export default (() => {
-  console.log(process.cwd());
-  // domains:
-  // try {
-  const config = toml.parse(fs.readFileSync(process.cwd() + "/pilsen.toml"));
+  const config = toml.parse(fs.readFileSync(cwd + "/pilsen.toml"));
 
-  const domainsFolders = getDomainsFolders(config.paths.domains);
-
-  // console.log(config, domainsFolders);
+  const domainsPath = config.paths.domains;
+  const domains = getDomainsFolders(domainsPath);
 
   return {
-    domains: domainsFolders,
+    domainsPath,
+    domains,
   };
   //   return data;
   // } catch (e) {

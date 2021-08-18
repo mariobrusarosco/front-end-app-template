@@ -1,7 +1,9 @@
 import * as React from 'react'
 
 const {{reactElementName}} = () => {
-  return { }
+  const [state, setState] = useState()
+
+  return { state, setState }
 }
 
 export default {{reactElementName}}

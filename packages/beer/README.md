@@ -1,6 +1,6 @@
 # my-beer
 
-# Build Elaborated Elements for React
+# Build Elegant Elements for React
 
 # BEER
 
