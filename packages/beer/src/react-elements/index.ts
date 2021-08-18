@@ -1,15 +1,6 @@
-// import { generateContextMetadata } from "./context";
 import path from "path";
 import config from "../config";
 import { reactElementMetadata, ReactElementTypes } from "./enums";
-// import { generateFunctionComponentMetadata } from "./functionComponent";
-// import { generateHookMetadata } from "./hook";
-
-// const structures: reactElementMetadata = {
-//   [ReactElementTypes.FUNCTION_COMPONENT]: generateFunctionComponentMetadata,
-//   [ReactElementTypes.CONTEXT]: generateContextMetadata,
-//   [ReactElementTypes.HOOK]: generateHookMetadata,
-// };
 
 export const elementsMetadata: reactElementMetadata = {
   [ReactElementTypes.FUNCTION_COMPONENT]: {

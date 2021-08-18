@@ -1,5 +1,5 @@
-// const { cosmiconfig, cosmiconfigSync } = require("cosmiconfig");
 import path from "path";
+// const { cosmiconfig, cosmiconfigSync } = require("cosmiconfig");
 // var appRoot = require("app-root-path");
 var toml = require("toml");
 var fs = require("fs");
@@ -20,30 +20,4 @@ export default (() => {
     domainsPath,
     domains,
   };
-  //   return data;
-  // } catch (e) {
-  //   console.error(
-  //     "Parsing error on line " +
-  //       e.line +
-  //       ", column " +
-  //       e.column +
-  //       ": " +
-  //       e.message
-  //   );
-  // }
-  // console.log(__dirname);
-  // console.log(process.cwd());
-  // console.log({ appRoot });
-  // explorer
-  //   .search()
-  //   .then((result: any) => {
-  //     console.log({ result });
-  //     // result.config is the parsed configuration object.
-  //     // result.filepath is the path to the config file that was found.
-  //     // result.isEmpty is true if there was nothing to parse in the config file.
-  //   })
-  //   .catch((error: any) => {
-  //     console.log({ error });
-  //     // Do something constructive.
-  //   });
 })();

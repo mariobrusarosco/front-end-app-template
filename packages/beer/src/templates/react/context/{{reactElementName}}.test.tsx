@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {{reactElementName}} from "@domains/{{domainName}}/components/{{reactElementName}}"
+import {{reactElementName}} from "@domains/{{domainName}}/context/{{reactElementName}}"
 
 
 describe("when rendering",() => {
