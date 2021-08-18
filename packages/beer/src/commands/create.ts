@@ -12,8 +12,6 @@ const run = async () => {
   const { reactElementType } = await questions.askAboutReactElementType();
   const { reactElementName } = await questions.askAboutReactElementName();
 
-  console.log({ domainName, reactElementType, reactElementName });
-
   const { destinationFolder, templateFolder } =
     await core.getReactElementMetadata({
       domainName,
@@ -29,9 +27,11 @@ const run = async () => {
     vars,
     (err: Error, createdFiles: string[]) => {
       if (err) throw err;
+
       createdFiles.forEach((filePath) =>
         console.log(chalk.red(`Created ${filePath}`))
       );
+
       console.log(chalk.greenBright("\nDone!\n"));
     }
   );

@@ -12,10 +12,11 @@ const run = async () => {
   console.log(chalk.green("Creating your new Domain...\n"));
 
   const domainName = await questions.askAboutNewDomainName();
-  const templateFolder = path.join(__dirname, "..", "templates", "domain");
-  const destinationFolder = path.join(process.cwd(), domainsPath);
 
   const vars = { domainName };
+
+  const templateFolder = path.join(__dirname, "..", "templates", "domain");
+  const destinationFolder = path.join(process.cwd(), domainsPath);
 
   copy(
     templateFolder,
@@ -23,9 +24,11 @@ const run = async () => {
     vars,
     (err: Error, createdFiles: string[]) => {
       if (err) throw err;
+
       createdFiles.forEach((filePath) =>
         console.log(chalk.red(`Created ${filePath}`))
       );
+
       console.log(chalk.greenBright("\nDone!\n"));
     }
   );
