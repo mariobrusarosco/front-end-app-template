@@ -1,3 +1,5 @@
 export enum DOMAINS {
-  GOALS = "goals", "equity", "investments"]
+  GOALS = "goals",
+  INVESTMENTS = "investments",
+  EQUITY = "equity",
 }

@@ -1,0 +1,4 @@
+# Beer configuration data
+
+[paths]
+domains = "src/domains"

@@ -1,24 +1,26 @@
 import Inquirer from "inquirer";
 import fuzzy from "fuzzy";
+import chalk from "chalk";
+import { DOMAINS } from "../core/enums";
 
 Inquirer.registerPrompt(
   "autocomplete",
   require("inquirer-autocomplete-prompt")
 );
 
+import config from "../config";
+
+console.log(config);
+
 const searchForDomains = (answers: any, input: any = "") => {
-  // if (!input) return [];
+  const domains = config.domains;
 
-  const results = fuzzy
-    .filter(input, Object.values(DOMAINS))
-    .map((item) => item.original);
+  const results = fuzzy.filter(input, domains).map((item) => item.original);
 
-  // console.log({ answers, input, results });
-
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(results);
-    }, 300);
+    }, 400);
   });
 };
 
@@ -27,10 +29,10 @@ export const domainName = () => {
     {
       name: "domainName",
       type: "autocomplete",
-      suggestOnly: true,
       message: "Type your domain name",
-      emptyText: "Nothing found!",
-      default: "goals",
+      emptyText:
+        "No domain was found. If you need to create a new one use the command 'beer new'",
+      default: DOMAINS.GOALS,
       pageSize: 4,
       source: searchForDomains,
     },

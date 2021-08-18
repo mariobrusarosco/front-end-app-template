@@ -6,13 +6,13 @@ const isDevMode = process.env.DEV_MODE == "true"
 
 
 if(isDevMode) {
-  console.log("Starting Front End Template - Development mode")
+  console.log("Drinking beer - Development mode")
 
   require('ts-node').register({ project: tsConfig })
   require('../src').default
 
 } else {
-  console.log("Starting Front End Template")
+  console.log("Drinking beer")
 
   return require('../lib').default
 }
