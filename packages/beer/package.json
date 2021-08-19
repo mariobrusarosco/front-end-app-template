@@ -1,6 +1,6 @@
 {
   "name": "my-beer",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": "Mario Brusarosco",
   "bin": {
     "beer": "./bin/run"
@@ -11,6 +11,7 @@
     "@types/yargs": "^17.0.2",
     "app-root-path": "^3.0.0",
     "cosmiconfig": "^7.0.0",
+    "fuzzy": "^0.1.3",
     "inquirer": "^8.1.2",
     "jest": "^27.0.6",
     "toml": "^3.0.0",
