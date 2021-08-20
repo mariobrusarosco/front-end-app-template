@@ -1,4 +1,5 @@
 import path from "path";
+// import { mountElementsSkeleton } from "../architecture";
 import { getDomainsFolders } from "./domains";
 import { ArchitectureConfig, Configuration, DomainsConfig } from "./enums";
 // const { cosmiconfig, cosmiconfigSync } = require("cosmiconfig");
@@ -12,12 +13,13 @@ const config = toml.parse(
 ) as Configuration;
 
 const domainsData = config.domains as DomainsConfig;
-const architectureData = config.architecture as ArchitectureConfig;
 
 export default {
+  ...config,
   domains: {
     ...domainsData,
     folders: getDomainsFolders({ config }),
   },
-  architecture: { ...architectureData },
+  // elements: mountElementsSkeleton({ config }),
+  // architecture: { ...architectureData },
 };

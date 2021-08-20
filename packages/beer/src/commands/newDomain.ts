@@ -8,6 +8,11 @@ import {
   printFileCreation,
   printFileCreationResult,
 } from "../io";
+import {
+  architectures,
+  ArchitectureTypes,
+  DEFAULT_ARCHITECTURE_SKELETON,
+} from "../architecture";
 const copy = require("copy-template-dir");
 
 const run = async () => {
@@ -16,25 +21,51 @@ const run = async () => {
   const rawDomainName = await questions.askAboutNewDomainName();
   const sanitizedDomainName = rawDomainName.trim().replace(/\s+/gim, "-");
 
-  const vars = { domainName: sanitizedDomainName };
+  const selectedArchitecture =
+    architectures[config.architecture.type as ArchitectureTypes];
 
-  console.log({ config });
+  const vars = {
+    domainName: sanitizedDomainName,
+    reactElementName: "template",
+    componentName: "template",
+    interface: "template",
+    routes: "template",
+  };
 
-  // const templateFolder = path.join(__dirname, "..", "templates", "domain");
-  // const destinationFolder = path.join(process.cwd(), domains.directories_path);
+  const templateFolder = path.join(
+    __dirname,
+    "..",
+    "templates",
+    config.architecture.type,
+    config.architecture.domains_folder_name,
+    "{{domainName}}"
+  );
+  const destinationFolder = path.join(
+    process.cwd(),
+    config.domains.directories_path,
+    sanitizedDomainName
+  );
 
-  // copy(
-  //   templateFolder,
-  //   destinationFolder,
-  //   vars,
-  //   (err: Error, createdFiles: string[]) => {
-  //     if (err) throw err;
+  console.log(
+    // config.architecture.type,
+    // selectedArchitecture,
+    vars.domainName,
+    templateFolder,
+    destinationFolder
+  );
 
-  //     createdFiles.forEach((filePath) => printFileCreation(filePath));
+  copy(
+    templateFolder,
+    destinationFolder,
+    vars,
+    (err: Error, createdFiles: string[]) => {
+      if (err) throw err;
 
-  //     printFileCreationResult(createdFiles.length);
-  //   }
-  // );
+      createdFiles.forEach((filePath) => printFileCreation(filePath));
+
+      printFileCreationResult(createdFiles.length);
+    }
+  );
 };
 
 const createCommand: CLICommand = {

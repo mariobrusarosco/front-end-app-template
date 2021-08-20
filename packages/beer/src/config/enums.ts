@@ -5,11 +5,19 @@ export interface DomainsConfig {
   excludes: string[];
 }
 
+// export interface ElementsConfig {
+//   [typeofstring]: {
+//     elementFolder: string;
+//   };
+// }
+
 export interface ArchitectureConfig {
   type: string;
+  configdomains_folder_name: string;
 }
 
 export interface Configuration {
   domains: DomainsConfig;
   architecture: ArchitectureConfig;
+  // elements: ElementsConfig;
 }
