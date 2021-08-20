@@ -1,0 +1,4 @@
+# Beer configuration data
+
+[domains]
+directories_path = "src/domain"

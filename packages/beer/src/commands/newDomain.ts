@@ -10,8 +10,6 @@ import {
 } from "../io";
 const copy = require("copy-template-dir");
 
-const { domains } = config;
-
 const run = async () => {
   printCommandInitialMessage("Creating your new Domain...");
 
@@ -20,21 +18,23 @@ const run = async () => {
 
   const vars = { domainName: sanitizedDomainName };
 
-  const templateFolder = path.join(__dirname, "..", "templates", "domain");
-  const destinationFolder = path.join(process.cwd(), domains.directories_path);
+  console.log({ config });
 
-  copy(
-    templateFolder,
-    destinationFolder,
-    vars,
-    (err: Error, createdFiles: string[]) => {
-      if (err) throw err;
+  // const templateFolder = path.join(__dirname, "..", "templates", "domain");
+  // const destinationFolder = path.join(process.cwd(), domains.directories_path);
 
-      createdFiles.forEach((filePath) => printFileCreation(filePath));
+  // copy(
+  //   templateFolder,
+  //   destinationFolder,
+  //   vars,
+  //   (err: Error, createdFiles: string[]) => {
+  //     if (err) throw err;
 
-      printFileCreationResult(createdFiles.length);
-    }
-  );
+  //     createdFiles.forEach((filePath) => printFileCreation(filePath));
+
+  //     printFileCreationResult(createdFiles.length);
+  //   }
+  // );
 };
 
 const createCommand: CLICommand = {

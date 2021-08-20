@@ -13,8 +13,6 @@ export const newDomainName = async (): Promise<string | Promise<any>> => {
     question
   );
 
-  console.log({ domainName });
-
   if (!domainName) {
     console.log(
       `You must provide a name for your new domain to continue the process`

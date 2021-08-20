@@ -5,6 +5,11 @@ export interface DomainsConfig {
   excludes: string[];
 }
 
+export interface ArchitectureConfig {
+  type: string;
+}
+
 export interface Configuration {
   domains: DomainsConfig;
+  architecture: ArchitectureConfig;
 }

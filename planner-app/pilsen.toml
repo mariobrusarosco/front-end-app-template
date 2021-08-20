@@ -1,0 +1,7 @@
+# Beer configuration data
+
+[domains]
+directories_path = "src/domains"
+
+[architecture]
+type = "default"
