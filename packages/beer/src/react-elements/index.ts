@@ -32,7 +32,7 @@ export const generateElementMetadata = ({
   const selectedMetadata = elementsMetadata[reactElementType];
   const destinationFolder = path.join(
     process.cwd(),
-    config.domainsPath,
+    config.domains.directories_path,
     domainName,
     selectedMetadata.elementFolder
   );

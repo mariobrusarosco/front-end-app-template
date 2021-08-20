@@ -1,22 +1,23 @@
-import chalk from "chalk";
 import { AvailableCommands } from "./enums";
 import { CLICommand } from "./interfaces";
 import questions from "../questions";
 import config from "../config";
 import path from "path";
+import { printCommandInitialMessage, printFileCreationResult } from "../io";
 const copy = require("copy-template-dir");
 
-const { domainsPath } = config;
+const { domains } = config;
 
 const run = async () => {
-  console.log(chalk.green("Creating your new Domain...\n"));
+  printCommandInitialMessage("Creating your new Domain...");
 
-  const domainName = await questions.askAboutNewDomainName();
+  const rawDomainName = await questions.askAboutNewDomainName();
+  const sanitizedDomainName = rawDomainName.trim().replace(/\s+/gim, "-");
 
-  const vars = { domainName };
+  const vars = { domainName: sanitizedDomainName };
 
   const templateFolder = path.join(__dirname, "..", "templates", "domain");
-  const destinationFolder = path.join(process.cwd(), domainsPath);
+  const destinationFolder = path.join(process.cwd(), domains.directories_path);
 
   copy(
     templateFolder,
@@ -25,11 +26,9 @@ const run = async () => {
     (err: Error, createdFiles: string[]) => {
       if (err) throw err;
 
-      createdFiles.forEach((filePath) =>
-        console.log(chalk.red(`Created ${filePath}`))
-      );
+      createdFiles.forEach((filePath) => printFileCreation(filePath));
 
-      console.log(chalk.greenBright("\nDone!\n"));
+      printFileCreationResult(createdFiles.length);
     }
   );
 };
@@ -41,3 +40,6 @@ const createCommand: CLICommand = {
 };
 
 export default createCommand;
+function printFileCreation(filePath: string): void {
+  throw new Error("Function not implemented.");
+}

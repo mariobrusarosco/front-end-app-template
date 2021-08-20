@@ -3,6 +3,7 @@ import core from "../core";
 import { AvailableCommands } from "./enums";
 import { CLICommand } from "./interfaces";
 import questions from "../questions";
+import { printFileCreation, printFileCreationResult } from "../io";
 const copy = require("copy-template-dir");
 
 const run = async () => {
@@ -28,11 +29,9 @@ const run = async () => {
     (err: Error, createdFiles: string[]) => {
       if (err) throw err;
 
-      createdFiles.forEach((filePath) =>
-        console.log(chalk.red(`Created ${filePath}`))
-      );
+      createdFiles.forEach((filePath) => printFileCreation(filePath));
 
-      console.log(chalk.greenBright("\nDone!\n"));
+      printFileCreationResult(createdFiles.length);
     }
   );
 };

@@ -1,18 +1,18 @@
 import Inquirer from "inquirer";
 import fuzzy from "fuzzy";
-import chalk from "chalk";
+import config from "../config";
 
 Inquirer.registerPrompt(
   "autocomplete",
   require("inquirer-autocomplete-prompt")
 );
 
-import config from "../config";
+const domainsFolders = config.domains.folders;
 
-const domains = config.domains;
-
-const searchForDomains = (answers: any, input: any = "") => {
-  const results = fuzzy.filter(input, domains).map((item) => item.original);
+const searchForDomains = (_: any, input: string = "") => {
+  const results = fuzzy
+    .filter(input, domainsFolders)
+    .map((item) => item.original);
 
   return new Promise((resolve, reject) => {
     setTimeout(() => {
