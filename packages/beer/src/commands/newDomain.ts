@@ -3,7 +3,11 @@ import { CLICommand } from "./interfaces";
 import questions from "../questions";
 import config from "../config";
 import path from "path";
-import { printCommandInitialMessage, printFileCreationResult } from "../io";
+import {
+  printCommandInitialMessage,
+  printFileCreation,
+  printFileCreationResult,
+} from "../io";
 const copy = require("copy-template-dir");
 
 const { domains } = config;
@@ -40,6 +44,3 @@ const createCommand: CLICommand = {
 };
 
 export default createCommand;
-function printFileCreation(filePath: string): void {
-  throw new Error("Function not implemented.");
-}
