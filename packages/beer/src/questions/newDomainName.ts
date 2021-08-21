@@ -21,5 +21,5 @@ export const newDomainName = async (): Promise<string | Promise<any>> => {
     return newDomainName();
   }
 
-  return domainName;
+  return domainName.trim().replace(/\s+/gim, "-");
 };

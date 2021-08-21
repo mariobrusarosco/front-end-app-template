@@ -8,50 +8,55 @@ import {
   printFileCreation,
   printFileCreationResult,
 } from "../io";
-import {
-  architectures,
-  ArchitectureTypes,
-  DEFAULT_ARCHITECTURE_SKELETON,
-} from "../architecture";
+import { architectures } from "../architecture";
+import { recursiveCopy } from "../FileSystem/recursive-copy";
+import _ from "lodash";
 const copy = require("copy-template-dir");
+
+const currentWorkingDirectory = process.cwd();
+const { architecture, domains } = config;
 
 const run = async () => {
   printCommandInitialMessage("Creating your new Domain...");
 
-  const rawDomainName = await questions.askAboutNewDomainName();
-  const sanitizedDomainName = rawDomainName.trim().replace(/\s+/gim, "-");
+  const architectureType = architecture.type;
+  const selectedArchitecture = architectures[architectureType];
+  const domainsFolderName = architecture.domains_folder_name;
 
-  const selectedArchitecture = architectures[config.architecture.type];
+  const domainName = await questions.askAboutNewDomainName();
 
   const vars = {
-    domainName: sanitizedDomainName,
-    reactElementName: "template",
-    componentName: "template",
-    interface: "template",
-    routes: "template",
+    domainName,
+    reactElement: "template",
   };
 
   const templateFolder = path.join(
     __dirname,
     "..",
     "templates",
-    config.architecture.type,
-    config.architecture.domains_folder_name,
+    architectureType,
+    domainsFolderName,
     "{{domainName}}"
   );
   const destinationFolder = path.join(
-    process.cwd(),
-    config.domains.directories_path,
-    sanitizedDomainName
+    currentWorkingDirectory,
+    domains.directories_path,
+    domainName
   );
 
-  console.log(
-    // config.architecture.type,
-    // selectedArchitecture,
-    vars.domainName,
-    templateFolder,
-    destinationFolder
-  );
+  // console.log(
+  //   // config.architecture.type,
+  //   // selectedArchitecture,
+  //   vars.domainName,
+  //   templateFolder,
+  //   destinationFolder
+  // );
+
+  // recursiveCopy({
+  //   templateFolder,
+  //   destinationFolder,
+  //   reactElementName: "domainTemplate",
+  // });
 
   copy(
     templateFolder,
