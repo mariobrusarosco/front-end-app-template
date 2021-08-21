@@ -15,7 +15,7 @@ export const getDomainsFolders = ({
   if (domainsToBeIncluded.length) return domainsToBeIncluded;
 
   const rawListOfDomains = fs.readdirSync(
-    path.join(cwd, config.domains.directories_path)
+    path.join(cwd, config.domains.path_to_domains_folder)
   );
 
   const filteredDomains = rawListOfDomains.filter(

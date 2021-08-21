@@ -1,5 +1,4 @@
 import chalk from "chalk";
-import core from "../core";
 import { AvailableCommands } from "./enums";
 import { CLICommand } from "./interfaces";
 import questions from "../questions";
@@ -10,6 +9,10 @@ import path from "path";
 import { parseElementVariables } from "../reactElements";
 import _ from "lodash";
 const copy = require("copy-template-dir");
+
+// const selectedArchitecture = architectures[architectureType];
+// const domainsFolderName = architecture.domains_folder_name;
+// const pathToDomainsFolder = domains.path_to_domains_folder;
 
 const run = async () => {
   console.log(chalk.green("Creating your React Element...\n"));
@@ -38,7 +41,7 @@ const run = async () => {
   );
   const destinationFolder = path.join(
     process.cwd(),
-    config.domains.directories_path,
+    config.domains.path_to_domains_folder,
     domainName,
     elementMetadata.destinationFolder
   );

@@ -1,7 +1,7 @@
 import { ArchitectureTypes } from "../architecture";
 
 export interface DomainsConfig {
-  directories_path: string;
+  path_to_domains_folder: string;
   folders: string[];
   includes: string[];
   excludes: string[];

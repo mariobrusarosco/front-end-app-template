@@ -48,3 +48,9 @@ export const recursiveCopy = ({
   //   return console.error("Copy failed: " + error);
   // });
 };
+
+// recursiveCopy({
+//   templateFolder,
+//   destinationFolder,
+//   reactElementName: "domainTemplate",
+// });

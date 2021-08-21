@@ -1,7 +1,7 @@
 import questions from "../questions";
 import chalk from "chalk";
-import { elementsMetadata, generateElementMetadata } from "../reactElements";
-import { ReactElementTypes } from "../reactElements/enums";
+// import { elementsMetadata, generateElementMetadata } from "../reactElements";
+// import { ReactElementTypes } from "../reactElements/enums";
 
 // const getProjectName = () => {
 //   return new Promise<string>(async (resolve, _) => {
@@ -61,19 +61,19 @@ import { ReactElementTypes } from "../reactElements/enums";
 //   });
 // };
 
-export const getReactElementMetadata = ({
-  reactElementType,
-  domainName,
-  reactElementName,
-}: {
-  reactElementType: ReactElementTypes;
-  domainName: ReactElementTypes;
-  reactElementName: ReactElementTypes;
-}) =>
-  generateElementMetadata({ domainName, reactElementName, reactElementType });
+// export const getReactElementMetadata = ({
+//   reactElementType,
+//   domainName,
+//   reactElementName,
+// }: {
+//   reactElementType: ReactElementTypes;
+//   domainName: ReactElementTypes;
+//   reactElementName: ReactElementTypes;
+// }) =>
+//   generateElementMetadata({ domainName, reactElementName, reactElementType });
 
-export default {
-  // getProjectName,
-  // getDomainName,
-  getReactElementMetadata,
-};
+// export default {
+//   // getProjectName,
+//   // getDomainName,
+//   getReactElementMetadata,
+// };

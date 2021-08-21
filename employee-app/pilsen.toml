@@ -1,7 +1,7 @@
 # Beer configuration data
 
 [domains]
-directories_path = "src/domain"
+path_to_domains_folder = "src/domain"
 
 [architecture]
 type = "legacy"

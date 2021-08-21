@@ -8,60 +8,35 @@ import {
   printFileCreation,
   printFileCreationResult,
 } from "../io";
-import { architectures } from "../architecture";
-import { recursiveCopy } from "../FileSystem/recursive-copy";
 import _ from "lodash";
 const copy = require("copy-template-dir");
 
-const currentWorkingDirectory = process.cwd();
 const { architecture, domains } = config;
+
+const architectureType = architecture.type;
+const currentWorkingDirectory = process.cwd();
 
 const run = async () => {
   printCommandInitialMessage("Creating your new Domain...");
 
-  const architectureType = architecture.type;
-  const selectedArchitecture = architectures[architectureType];
-  const domainsFolderName = architecture.domains_folder_name;
-
   const domainName = await questions.askAboutNewDomainName();
-
-  const vars = {
-    domainName,
-    reactElement: "template",
-  };
 
   const templateFolder = path.join(
     __dirname,
     "..",
     "templates",
     architectureType,
-    domainsFolderName,
-    "{{domainName}}"
+    "tree"
   );
   const destinationFolder = path.join(
     currentWorkingDirectory,
-    domains.directories_path,
+    domains.path_to_domains_folder,
     domainName
   );
-
-  // console.log(
-  //   // config.architecture.type,
-  //   // selectedArchitecture,
-  //   vars.domainName,
-  //   templateFolder,
-  //   destinationFolder
-  // );
-
-  // recursiveCopy({
-  //   templateFolder,
-  //   destinationFolder,
-  //   reactElementName: "domainTemplate",
-  // });
 
   copy(
     templateFolder,
     destinationFolder,
-    vars,
     (err: Error, createdFiles: string[]) => {
       if (err) throw err;
 
@@ -72,10 +47,10 @@ const run = async () => {
   );
 };
 
-const createCommand: CLICommand = {
+const newDomainCommand: CLICommand = {
   command: AvailableCommands.NEW_DOMAIN,
   describe: "Creates a new domain",
   handler: run,
 };
 
-export default createCommand;
+export default newDomainCommand;
