@@ -1,3 +1,5 @@
+import { ArchitectureTypes } from "../architecture";
+
 export interface DomainsConfig {
   directories_path: string;
   folders: string[];
@@ -12,8 +14,8 @@ export interface DomainsConfig {
 // }
 
 export interface ArchitectureConfig {
-  type: string;
-  configdomains_folder_name: string;
+  type: ArchitectureTypes;
+  domains_folder_name: string;
 }
 
 export interface Configuration {

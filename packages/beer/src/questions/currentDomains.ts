@@ -28,7 +28,7 @@ export const currentDomains = () => {
       type: "autocomplete",
       message: "Type your domain name",
       emptyText:
-        "No domain was found. If you need to create a new one use the command 'beer new'",
+        "No domain was found. If you need to create a new one use the command 'beer new domain'",
       pageSize: 4,
       source: searchForDomains,
     },

@@ -1,5 +1,5 @@
 export enum ReactElementTypes {
-  FUNCTION_COMPONENT = "functionComponent",
+  COMPONENT = "component",
   CONTEXT = "context",
   HOOK = "hook",
 }

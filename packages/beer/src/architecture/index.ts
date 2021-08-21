@@ -24,18 +24,22 @@ export const DEFAULT_ARCHITECTURE_ELEMENTS_LIST = Object.keys(
 export const DEFAULT_ARCHITECTURE_SKELETON = {
   ["component"]: {
     elementFolder: "ui/components",
-    templateFolder: "templates/default/{{domainName}}/ui/components",
-    reactElementName: "component",
+    templateFolder: "templates/default/domains/{{domainName}}/ui/components",
+    destinationFolder: "ui/components",
+    reactElementType: "component",
   },
   ["hook"]: {
-    elementFolder: "ui/components",
-    templateFolder: "templates/default/{{domainName}}/ui/hooks",
-    reactElementName: "hook",
+    elementFolder: "ui/hooks",
+    templateFolder: "templates/default/domains/{{domainName}}/ui/hooks",
+    destinationFolder: "ui/hooks",
+    reactElementType: "hook",
   },
   ["service"]: {
-    elementFolder: "ui/components",
-    templateFolder: "templates/default/{{domainName}}/application/services",
-    reactElementName: "service",
+    elementFolder: "application/services",
+    templateFolder:
+      "templates/default/domains/{{domainName}}/application/services",
+    destinationFolder: "application/services",
+    reactElementType: "service",
   },
 };
 
@@ -49,21 +53,33 @@ export const LEGACY_ARCHITECTURE_ELEMENTS_LIST = Object.keys(
   LEGACY_ARCHITECTURE_ELEMENTS
 );
 
-export const LEGACY_ARCHITECTURE_SKELETON = {
+export type ReactElementMetadata = {
+  [key in string]: {
+    elementFolder: string;
+    templateFolder: string;
+    destinationFolder: string;
+    reactElementType: string;
+  };
+};
+
+export const LEGACY_ARCHITECTURE_SKELETON: ReactElementMetadata = {
   ["component"]: {
     elementFolder: "components",
-    templateFolder: "templates/default/{{domainName}}/components",
-    reactElementName: "component",
+    templateFolder: "templates/legacy/domain/{{domainName}}/components",
+    destinationFolder: "{{domainName}}/components",
+    reactElementType: "component",
   },
   ["hook"]: {
     elementFolder: "hooks",
-    templateFolder: "templates/legacy/{{domainName}}/hooks",
-    reactElementName: "hook",
+    templateFolder: "templates/legacy/domain/{{domainName}}/hooks",
+    destinationFolder: "{{domainName}}/hooks",
+    reactElementType: "hook",
   },
   ["context"]: {
     elementFolder: "ui/components",
-    templateFolder: "templates/legacy/{{domainName}}/contexts",
-    reactElementName: "context",
+    templateFolder: "templates/legacy/domain/{{domainName}}/contexts",
+    destinationFolder: "templates/legacy/domain/{{domainName}}/contexts",
+    reactElementType: "context",
   },
 };
 
@@ -72,7 +88,9 @@ export enum ArchitectureTypes {
   LEGACY = "legacy",
 }
 
-export const architectures = {
+export const architectures: {
+  [key in ArchitectureTypes]: ReactElementMetadata;
+} = {
   [ArchitectureTypes.DEFAULT]: DEFAULT_ARCHITECTURE_SKELETON,
   [ArchitectureTypes.LEGACY]: LEGACY_ARCHITECTURE_SKELETON,
 };
