@@ -1,5 +1,6 @@
 import * as React from 'react'
-import {{reactElementName}} from "@{{domainsFolderName}}/{{domainName}}/{{elementFolder}}/{{reactElementName}}";
+import {{reactElementName}} from "@domains/{{domainName}}/hooks/{{reactElementName}}"
+
 
 describe("when rendering",() => {
   it("lorem ipsum", () => {

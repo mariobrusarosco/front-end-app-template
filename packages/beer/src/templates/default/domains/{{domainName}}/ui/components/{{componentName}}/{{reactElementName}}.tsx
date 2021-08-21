@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 interface Props {
   lorem: string
@@ -7,7 +7,7 @@ interface Props {
 const {{reactElementName}}: React.FunctionComponent<Props> = ({
   lorem
 }) => {
-  return <div>{lorem}</div>
-}
+  return <div>{lorem}</div>;
+};
 
-export default {{reactElementName}}
+export default {{reactElementName}};
