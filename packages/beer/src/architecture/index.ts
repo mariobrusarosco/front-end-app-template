@@ -79,27 +79,24 @@ export const LEGACY_ARCHITECTURE_SKELETON: ReactElementMetadata = {
     templateFolder: "templates/legacy/domain/{{domainName}}/components",
     destinationFolder: "components",
     reactElementType: "component",
-    elementTestTitle:
-      "Domains | :domainName | UI | Components | :reactElementName",
-    elementAbsolutePath: "@domains/:domainName/ui/components/:reactElementName",
+    elementTestTitle: "Domains | :domainName | Components | :reactElementName",
+    elementAbsolutePath: "@domains/:domainName/components/:reactElementName",
   },
   ["hook"]: {
     elementFolder: "hooks",
     templateFolder: "templates/legacy/domain/{{domainName}}/hooks",
     destinationFolder: "hooks",
     reactElementType: "hook",
-    elementTestTitle:
-      "Domains | :domainName | UI | Components | :reactElementName",
-    elementAbsolutePath: "@domains/:domainName/ui/components/:reactElementName",
+    elementTestTitle: "Domains | :domainName | Hooks | :reactElementName",
+    elementAbsolutePath: "@domains/:domainName/components/:reactElementName",
   },
   ["context"]: {
-    elementFolder: "ui/components",
+    elementFolder: "context",
     templateFolder: "templates/legacy/domain/{{domainName}}/contexts",
     destinationFolder: "contexts",
     reactElementType: "context",
-    elementTestTitle:
-      "Domains | :domainName | UI | Components | :reactElementName",
-    elementAbsolutePath: "@domains/:domainName/ui/components/:reactElementName",
+    elementTestTitle: "Domains | :domainName | Context | :reactElementName",
+    elementAbsolutePath: "@domains/:domainName/contexts6/:reactElementName",
   },
 };
 
