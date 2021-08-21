@@ -1,10 +1,10 @@
 import * as React from 'react'
-import {{{{reactElementName}}}} from "@domains/{{domainName}}/components/{{{{reactElementName}}}}"
+import {{reactElementName}} from "{{elementAbsolutePath}}";
 
-
-describe("when rendering",() => {
-  it("lorem ipsum", () => {
-    expect(false).toBe(true)
+describe("{{elementTestTitle}}" ,() => {
+  describe("when rendering",() => {
+    it("lorem ipsum", () => {
+      expect(false).toBe(true)
+    })
   })
 })
-
