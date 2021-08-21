@@ -5,3 +5,7 @@ export const {{reactElement}}Routes: RouteProps[] = [
     exact: true
   }
 ];
+
+{{#names}}
+  <strong>{{name}}</strong>
+{{/names}}
