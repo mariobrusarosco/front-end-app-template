@@ -10,7 +10,7 @@ export const reactElementType = () => {
       name: "reactElementType",
       type: "list",
       message: "Type your react type",
-      choices: Object.keys(selectedArchitecture),
+      choices: Object.keys(selectedArchitecture.reactElements),
     },
   ];
 

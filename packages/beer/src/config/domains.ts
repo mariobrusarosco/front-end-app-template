@@ -2,7 +2,7 @@ import path from "path";
 import fs from "fs";
 import { Configuration } from "./enums";
 
-const cwd = process.cwd();
+const currentWorkingDirectory = process.cwd();
 
 export const getDomainsFolders = ({
   config,
@@ -15,7 +15,7 @@ export const getDomainsFolders = ({
   if (domainsToBeIncluded.length) return domainsToBeIncluded;
 
   const rawListOfDomains = fs.readdirSync(
-    path.join(cwd, config.domains.path_to_domains_folder)
+    path.join(currentWorkingDirectory, config.domains.path_to_domains_folder)
   );
 
   const filteredDomains = rawListOfDomains.filter(

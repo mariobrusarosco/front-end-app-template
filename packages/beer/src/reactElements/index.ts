@@ -10,22 +10,22 @@ import { capitalize } from "lodash";
 
 export const parseElementVariables = ({
   reactElementName,
-  domainsFolderName,
+  // domainsFolderName,
   domainName,
-  elementMetadata,
+  selectedElementMetadata,
 }: {
   reactElementName: string;
-  domainsFolderName: string;
+  // domainsFolderName: string;
   domainName: string;
-  elementMetadata: any;
+  selectedElementMetadata: any;
 }) => {
   // Domains | Messaging | UI | Components | MessagingDrawer
   // const test = ["domains", ...elementFolder.split("/")];
 
-  const a = elementMetadata.elementTestTitle
+  const a = selectedElementMetadata.elementTestTitle
     .replace(":domainName", capitalize(domainName))
     .replace(":reactElementName", reactElementName);
-  const b = elementMetadata.elementAbsolutePath
+  const b = selectedElementMetadata.elementAbsolutePath
     .replace(":domainName", domainName)
     .replace(":reactElementName", reactElementName);
 

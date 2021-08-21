@@ -10,8 +10,13 @@ import { parseElementVariables } from "../reactElements";
 import _ from "lodash";
 const copy = require("copy-template-dir");
 
-// const selectedArchitecture = architectures[architectureType];
-// const domainsFolderName = architecture.domains_folder_name;
+const { architecture, domains } = config;
+
+const architectureType = architecture.type;
+
+const selectedArchitecture = architectures[architectureType];
+const domainsFolderName = architecture.domains_folder_name;
+const currentWorkingDirectory = process.cwd();
 // const pathToDomainsFolder = domains.path_to_domains_folder;
 
 const run = async () => {
@@ -22,8 +27,9 @@ const run = async () => {
   const { reactElementName } = await questions.askAboutReactElementName();
 
   const selectedArchitecture = architectures[config.architecture.type];
+  const architectureReactElements = selectedArchitecture.reactElements;
 
-  const elementMetadata = selectedArchitecture[reactElementType];
+  const selectedElementMetadata = architectureReactElements[reactElementType];
 
   const domainsFolderName = config.architecture.domains_folder_name;
 
@@ -36,35 +42,40 @@ const run = async () => {
 
   const templateFolder = path.join(
     __dirname,
-    "..",
-    elementMetadata.templateFolder
+    "../",
+    selectedArchitecture.templateFolder,
+    selectedElementMetadata.elementFolder
   );
   const destinationFolder = path.join(
     process.cwd(),
     config.domains.path_to_domains_folder,
     domainName,
-    elementMetadata.destinationFolder
+    selectedElementMetadata.elementFolder
   );
 
   const { elementAbsolutePath, elementTestTitle } = parseElementVariables({
-    reactElementName: reactElementName,
-    domainsFolderName,
+    reactElementName,
     domainName,
-    elementMetadata,
+    selectedElementMetadata,
+    //   domainsFolderName,
+    //   elementMetadata,
   });
 
   const templateVariables = {
-    reactElementName: reactElementName,
-    domainsFolderName,
-    domainName,
+    reactElementName,
     elementAbsolutePath,
     elementTestTitle,
+    //   domainsFolderName,
+    //   domainName,
+    //   elementAbsolutePath,
+    //   elementTestTitle,
   };
 
   console.log({
-    elementMetadata,
+    selectedElementMetadata,
     destinationFolder,
-    templateVariables,
+    templateFolder,
+    // templateVariables,
   });
 
   copy(
