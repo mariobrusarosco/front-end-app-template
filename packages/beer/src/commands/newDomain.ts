@@ -21,8 +21,7 @@ const run = async () => {
   const rawDomainName = await questions.askAboutNewDomainName();
   const sanitizedDomainName = rawDomainName.trim().replace(/\s+/gim, "-");
 
-  const selectedArchitecture =
-    architectures[config.architecture.type as ArchitectureTypes];
+  const selectedArchitecture = architectures[config.architecture.type];
 
   const vars = {
     domainName: sanitizedDomainName,

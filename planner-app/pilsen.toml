@@ -5,3 +5,18 @@ directories_path = "src/domains"
 
 [architecture]
 type = "default"
+domains_folder_name = "domains"
+
+[elements]
+
+[elements.component]
+  elementFolder = "ui/components"
+
+[elements.hook]
+  elementFolder = "ui/hook"
+
+[elements.service]
+  elementFolder = "application/service"
+
+
+
