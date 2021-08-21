@@ -4,20 +4,20 @@ import { Configuration } from "./enums";
 
 const currentWorkingDirectory = process.cwd();
 
-export const getDomainsFolders = ({
-  config,
-}: {
+type Props = {
   config: Configuration;
-}): string[] => {
+};
+export const getDomainsFolders = ({ config }: Props): string[] => {
   const domainsToBeIncluded = config.domains.includes || [];
   const domainsToBeExcluded = config.domains.excludes || [];
 
   if (domainsToBeIncluded.length) return domainsToBeIncluded;
 
-  const rawListOfDomains = fs.readdirSync(
-    path.join(currentWorkingDirectory, config.domains.path_to_domains_folder)
+  const projectsDomainFolderPath = path.join(
+    currentWorkingDirectory,
+    config.domains.pathToDomainsFolder
   );
-
+  const rawListOfDomains = fs.readdirSync(projectsDomainFolderPath);
   const filteredDomains = rawListOfDomains.filter(
     (domain) => !domainsToBeExcluded.includes(domain)
   );

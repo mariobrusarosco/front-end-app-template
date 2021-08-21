@@ -60,7 +60,7 @@ export const buildelementTestTitle = ({
 //   const selectedMetadata = elementsMetadata[reactElementType];
 //   const destinationFolder = path.join(
 //     process.cwd(),
-//     config.domains.path_to_domains_folder,
+//     config.domains.pathToDomainsFolder,
 //     domainName,
 //     selectedMetadata.elementFolder
 //   );

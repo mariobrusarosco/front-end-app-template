@@ -30,7 +30,7 @@ const run = async () => {
   );
   const destinationFolder = path.join(
     currentWorkingDirectory,
-    domains.path_to_domains_folder,
+    domains.pathToDomainsFolder,
     domainName
   );
 

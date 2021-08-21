@@ -3,21 +3,10 @@ import { AvailableCommands } from "./enums";
 import { CLICommand } from "./interfaces";
 import questions from "../questions";
 import { printFileCreation, printFileCreationResult } from "../io";
-import { architectures, ArchitectureTypes } from "../architecture";
 import config from "../config";
 import path from "path";
 import { parseElementVariables } from "../reactElements";
-import _ from "lodash";
 const copy = require("copy-template-dir");
-
-const { architecture, domains } = config;
-
-const architectureType = architecture.type;
-
-const selectedArchitecture = architectures[architectureType];
-const domainsFolderName = architecture.domains_folder_name;
-const currentWorkingDirectory = process.cwd();
-// const pathToDomainsFolder = domains.path_to_domains_folder;
 
 const run = async () => {
   console.log(chalk.green("Creating your React Element...\n"));
@@ -26,29 +15,19 @@ const run = async () => {
   const { reactElementType } = await questions.askAboutReactElementType();
   const { reactElementName } = await questions.askAboutReactElementName();
 
-  const selectedArchitecture = architectures[config.architecture.type];
-  const architectureReactElements = selectedArchitecture.reactElements;
-
+  const architectureReactElements = config.reactElements;
   const selectedElementMetadata = architectureReactElements[reactElementType];
-
-  const domainsFolderName = config.architecture.domains_folder_name;
-
-  // const { destinationFolder, templateFolder } =
-  //   await core.getReactElementMetadata({
-  //     domainName,
-  //     reactElementType,
-  //     reactElementName,
-  //   });
 
   const templateFolder = path.join(
     __dirname,
     "../",
-    selectedArchitecture.templateFolder,
+    "templates",
+    config.architecture.type,
     selectedElementMetadata.elementFolder
   );
   const destinationFolder = path.join(
     process.cwd(),
-    config.domains.path_to_domains_folder,
+    config.domains.pathToDomainsFolder,
     domainName,
     selectedElementMetadata.elementFolder
   );
@@ -57,26 +36,13 @@ const run = async () => {
     reactElementName,
     domainName,
     selectedElementMetadata,
-    //   domainsFolderName,
-    //   elementMetadata,
   });
 
   const templateVariables = {
     reactElementName,
     elementAbsolutePath,
     elementTestTitle,
-    //   domainsFolderName,
-    //   domainName,
-    //   elementAbsolutePath,
-    //   elementTestTitle,
   };
-
-  console.log({
-    selectedElementMetadata,
-    destinationFolder,
-    templateFolder,
-    // templateVariables,
-  });
 
   copy(
     templateFolder,

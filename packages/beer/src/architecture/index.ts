@@ -10,22 +10,34 @@
 //   });
 // };
 
-export enum DEFAULT_ARCHITECTURE_ELEMENTS {
+export type ReactElementMetadata = {
+  [key in string]: {
+    elementFolder: string;
+    reactElementType: string;
+    elementTestTitle: string;
+    elementAbsolutePath: string;
+  };
+};
+
+export enum ArchitectureTypes {
+  DEFAULT = "default",
+  LEGACY = "legacy",
+}
+
+enum DEFAULT_ARCHITECTURE_ELEMENTS {
   FUNCTION_COMPONENT = "functionComponent",
   HOOK = "hook",
   SERVICE = "service",
   ROUTES = "routes",
 }
 
-export const DEFAULT_ARCHITECTURE_ELEMENTS_LIST = Object.keys(
+const DEFAULT_ARCHITECTURE_ELEMENTS_LIST = Object.keys(
   DEFAULT_ARCHITECTURE_ELEMENTS
 );
 
-export const DEFAULT_ARCHITECTURE_SKELETON = {
+const DEFAULT_ARCHITECTURE_SKELETON = {
   ["component"]: {
     elementFolder: "ui/components",
-    // templateFolder: "ui/components",
-    // destinationFolder: "ui/components",
     reactElementType: "component",
     elementTestTitle:
       "Domains | :domainName | UI | Components | :reactElementName",
@@ -47,28 +59,17 @@ export const DEFAULT_ARCHITECTURE_SKELETON = {
   },
 };
 
-export enum LEGACY_ARCHITECTURE_ELEMENTS {
+enum LEGACY_ARCHITECTURE_ELEMENTS {
   FUNCTION_COMPONENT = "functionComponent",
   CONTEXT = "context",
   HOOK = "hook",
 }
 
-export const LEGACY_ARCHITECTURE_ELEMENTS_LIST = Object.keys(
+const LEGACY_ARCHITECTURE_ELEMENTS_LIST = Object.keys(
   LEGACY_ARCHITECTURE_ELEMENTS
 );
 
-export type ReactElementMetadata = {
-  [key in string]: {
-    elementFolder: string;
-    templateFolder?: string;
-    destinationFolder?: string;
-    reactElementType: string;
-    elementTestTitle?: string;
-    elementAbsolutePath?: string;
-  };
-};
-
-export const LEGACY_ARCHITECTURE_SKELETON: ReactElementMetadata = {
+const LEGACY_ARCHITECTURE_SKELETON: ReactElementMetadata = {
   ["component"]: {
     elementFolder: "components",
     reactElementType: "component",
@@ -85,16 +86,11 @@ export const LEGACY_ARCHITECTURE_SKELETON: ReactElementMetadata = {
     elementFolder: "contexts",
     reactElementType: "context",
     elementTestTitle: "Domains | :domainName | Context | :reactElementName",
-    elementAbsolutePath: "@domains/:domainName/contexts6/:reactElementName",
+    elementAbsolutePath: "@domains/:domainName/contexts/:reactElementName",
   },
 };
 
-export enum ArchitectureTypes {
-  DEFAULT = "default",
-  LEGACY = "legacy",
-}
-
-export const architectures: {
+const architectures: {
   [key in ArchitectureTypes]: {
     reactElements: ReactElementMetadata;
     templateFolder: string;

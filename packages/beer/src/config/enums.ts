@@ -1,17 +1,20 @@
 import { ArchitectureTypes } from "../architecture";
 
 export interface DomainsConfig {
-  path_to_domains_folder: string;
+  pathToDomainsFolder: string;
   folders: string[];
   includes: string[];
   excludes: string[];
 }
 
-// export interface ElementsConfig {
-//   [typeofstring]: {
-//     elementFolder: string;
-//   };
-// }
+export type ReactElementsConfig = {
+  [key in string]: {
+    elementFolder: string;
+    reactElementType: string;
+    elementTestTitle: string;
+    elementAbsolutePath: string;
+  };
+};
 
 export interface ArchitectureConfig {
   type: ArchitectureTypes;
@@ -21,5 +24,5 @@ export interface ArchitectureConfig {
 export interface Configuration {
   domains: DomainsConfig;
   architecture: ArchitectureConfig;
-  // elements: ElementsConfig;
+  reactElements: ReactElementsConfig;
 }

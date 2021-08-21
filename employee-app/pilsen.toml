@@ -1,22 +1,31 @@
 # Beer configuration data
 
 [domains]
-path_to_domains_folder = "src/domain"
+pathToDomainsFolder = "src/domain"
+includes=[]
+excludes=[]
 
 [architecture]
 type = "legacy"
-domains_folder_name = "domain"
 
-[elements]
+[reactElements]
 
-[elements.component]
-  elementFolder = "ui/components"
+  [reactElements.component]
+    elementFolder = "components"
+    reactElementType = "component"
+    elementTestTitle = "Domains | :domainName | Components | :reactElementName"
+    elementAbsolutePath = "@domains/:domainName/components/:reactElementName"
 
-[elements.hook]
-  elementFolder = "ui/hook"
+  [reactElements.hook]
+    elementFolder = "ui/hooks"
+    reactElementType = "hook"
+    elementTestTitle = "Domains | :domainName | UI | Hooks | :reactElementName"
+    elementAbsolutePath = "@domains/:domainName/ui/hooks/:reactElementName"
 
-[elements.service]
-  elementFolder = "application/service"
-
+  [reactElements.context]
+    elementFolder = "contexts"
+    reactElementType = "context"
+    elementTestTitle = "Domains | :domainName | Context | :reactElementName"
+    elementAbsolutePath = "@domains/:domainName/context/:reactElementName"
 
 
