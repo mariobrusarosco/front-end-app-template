@@ -1,6 +1,6 @@
 {
   "name": "my-beer",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "author": "Mario Brusarosco",
   "bin": {
     "beer": "./bin/run"
@@ -63,6 +63,7 @@
     "move-template-to-lib-folder": "cp -r src/templates lib",
     "posttest": "eslint . --ext .ts --config .eslintrc",
     "build": "tsc && yarn move-template-to-lib-folder",
+    "postinstall": "yarn build",
     "test": "jest"
   },
   "types": "lib/index.d.ts"
