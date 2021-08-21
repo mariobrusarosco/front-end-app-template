@@ -2,3 +2,21 @@
 
 [domains]
 directories_path = "src/domain"
+
+[architecture]
+type = "legacy"
+domains_folder_name = "domain"
+
+[elements]
+
+[elements.component]
+  elementFolder = "ui/components"
+
+[elements.hook]
+  elementFolder = "ui/hook"
+
+[elements.service]
+  elementFolder = "application/service"
+
+
+
