@@ -3,16 +3,11 @@ import { CLICommand } from "./interfaces";
 import questions from "../questions";
 import config from "../config";
 import path from "path";
-import {
-  printCommandInitialMessage,
-  printFileCreation,
-  printFileCreationResult,
-} from "../io";
+import { printCommandInitialMessage, printFileCreationProcess } from "../io";
 import _ from "lodash";
-const copy = require("copy-template-dir");
+import { copyAndParseTemplates } from "../FileSystem";
 
 const { architecture, domains } = config;
-
 const architectureType = architecture.type;
 const currentWorkingDirectory = process.cwd();
 
@@ -34,17 +29,15 @@ const run = async () => {
     domainName
   );
 
-  copy(
+  copyAndParseTemplates({
     templateFolder,
     destinationFolder,
-    (err: Error, createdFiles: string[]) => {
+    handleFileCreation: (err, createdFiles) => {
       if (err) throw err;
 
-      createdFiles.forEach((filePath) => printFileCreation(filePath));
-
-      printFileCreationResult(createdFiles.length);
-    }
-  );
+      printFileCreationProcess(createdFiles);
+    },
+  });
 };
 
 const newDomainCommand: CLICommand = {

@@ -2,10 +2,15 @@ import chalk from "chalk";
 import { AvailableCommands } from "./enums";
 import { CLICommand } from "./interfaces";
 import questions from "../questions";
-import { printFileCreation, printFileCreationResult } from "../io";
+import {
+  printFileCreation,
+  printFileCreationProcess,
+  printFileCreationResult,
+} from "../io";
 import config from "../config";
 import path from "path";
 import { parseElementVariables } from "../reactElements";
+import { copyAndParseTemplates } from "../FileSystem";
 const copy = require("copy-template-dir");
 
 const run = async () => {
@@ -44,18 +49,16 @@ const run = async () => {
     elementTestTitle,
   };
 
-  copy(
+  copyAndParseTemplates({
     templateFolder,
     destinationFolder,
     templateVariables,
-    (err: Error, createdFiles: string[]) => {
+    handleFileCreation: (err, createdFiles) => {
       if (err) throw err;
 
-      createdFiles.forEach((filePath) => printFileCreation(filePath));
-
-      printFileCreationResult(createdFiles.length);
-    }
-  );
+      printFileCreationProcess(createdFiles);
+    },
+  });
 };
 
 const createCommand: CLICommand = {
