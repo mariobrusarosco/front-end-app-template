@@ -27,12 +27,17 @@ export const DEFAULT_ARCHITECTURE_SKELETON = {
     templateFolder: "templates/default/domains/{{domainName}}/ui/components",
     destinationFolder: "ui/components",
     reactElementType: "component",
+    elementTestTitle:
+      "Domains | :domainName | UI | Components | :reactElementName",
+    elementAbsolutePath: "@domains/:domainName/ui/components/:reactElementName",
   },
   ["hook"]: {
     elementFolder: "ui/hooks",
     templateFolder: "templates/default/domains/{{domainName}}/ui/hooks",
     destinationFolder: "ui/hooks",
     reactElementType: "hook",
+    elementTestTitle: "Domains | :domainName | UI | Hooks | :reactElementName",
+    elementAbsolutePath: "@domains/:domainName/ui/hooks/:reactElementName",
   },
   ["service"]: {
     elementFolder: "application/services",
@@ -40,6 +45,10 @@ export const DEFAULT_ARCHITECTURE_SKELETON = {
       "templates/default/domains/{{domainName}}/application/services",
     destinationFolder: "application/services",
     reactElementType: "service",
+    elementTestTitle:
+      "Domains | :domainName | Application | Services | :reactElementName",
+    elementAbsolutePath:
+      "@domains/:domainName/application/services/:reactElementName",
   },
 };
 
@@ -59,6 +68,8 @@ export type ReactElementMetadata = {
     templateFolder: string;
     destinationFolder: string;
     reactElementType: string;
+    elementTestTitle: string;
+    elementAbsolutePath: string;
   };
 };
 
@@ -66,20 +77,29 @@ export const LEGACY_ARCHITECTURE_SKELETON: ReactElementMetadata = {
   ["component"]: {
     elementFolder: "components",
     templateFolder: "templates/legacy/domain/{{domainName}}/components",
-    destinationFolder: "{{domainName}}/components",
+    destinationFolder: "components",
     reactElementType: "component",
+    elementTestTitle:
+      "Domains | :domainName | UI | Components | :reactElementName",
+    elementAbsolutePath: "@domains/:domainName/ui/components/:reactElementName",
   },
   ["hook"]: {
     elementFolder: "hooks",
     templateFolder: "templates/legacy/domain/{{domainName}}/hooks",
-    destinationFolder: "{{domainName}}/hooks",
+    destinationFolder: "hooks",
     reactElementType: "hook",
+    elementTestTitle:
+      "Domains | :domainName | UI | Components | :reactElementName",
+    elementAbsolutePath: "@domains/:domainName/ui/components/:reactElementName",
   },
   ["context"]: {
     elementFolder: "ui/components",
     templateFolder: "templates/legacy/domain/{{domainName}}/contexts",
-    destinationFolder: "templates/legacy/domain/{{domainName}}/contexts",
+    destinationFolder: "contexts",
     reactElementType: "context",
+    elementTestTitle:
+      "Domains | :domainName | UI | Components | :reactElementName",
+    elementAbsolutePath: "@domains/:domainName/ui/components/:reactElementName",
   },
 };
 

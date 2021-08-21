@@ -7,6 +7,8 @@ import { printFileCreation, printFileCreationResult } from "../io";
 import { architectures, ArchitectureTypes } from "../architecture";
 import config from "../config";
 import path from "path";
+import { parseElementVariables } from "../reactElements";
+import _ from "lodash";
 const copy = require("copy-template-dir");
 
 const run = async () => {
@@ -19,6 +21,8 @@ const run = async () => {
   const selectedArchitecture = architectures[config.architecture.type];
 
   const elementMetadata = selectedArchitecture[reactElementType];
+
+  const domainsFolderName = config.architecture.domains_folder_name;
 
   // const { destinationFolder, templateFolder } =
   //   await core.getReactElementMetadata({
@@ -39,24 +43,31 @@ const run = async () => {
     elementMetadata.destinationFolder
   );
 
-  const vars = {
-    reactElementName,
-    domainsFolderName: config.architecture.domains_folder_name,
+  const { elementAbsolutePath, elementTestTitle } = parseElementVariables({
+    reactElementName: reactElementName,
+    domainsFolderName,
     domainName,
-    elementFolder: elementMetadata.elementFolder,
+    elementMetadata,
+  });
+
+  const templateVariables = {
+    reactElementName: reactElementName,
+    domainsFolderName,
+    domainName,
+    elementAbsolutePath,
+    elementTestTitle,
   };
 
   console.log({
-    // selectedArchitecture,
-    templateFolder,
+    elementMetadata,
     destinationFolder,
-    vars,
+    templateVariables,
   });
 
   copy(
     templateFolder,
     destinationFolder,
-    vars,
+    templateVariables,
     (err: Error, createdFiles: string[]) => {
       if (err) throw err;
 

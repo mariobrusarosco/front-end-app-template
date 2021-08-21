@@ -11,12 +11,15 @@ domains_folder_name = "domains"
 
 [elements.component]
   elementFolder = "ui/components"
+  elementTestTitle = "Domains | :domainName | UI | Components | :elementName"
 
 [elements.hook]
   elementFolder = "ui/hook"
+  elementTestTitle= "Domains | :domainName | UI | Components | :elementName"
 
 [elements.service]
   elementFolder = "application/service"
+  elementTestTitle= "Domains | :domainName | UI | Components | :elementName"
 
 
 

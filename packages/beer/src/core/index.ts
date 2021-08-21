@@ -1,7 +1,7 @@
 import questions from "../questions";
 import chalk from "chalk";
-import { elementsMetadata, generateElementMetadata } from "../react-elements";
-import { ReactElementTypes } from "../react-elements/enums";
+import { elementsMetadata, generateElementMetadata } from "../reactElements";
+import { ReactElementTypes } from "../reactElements/enums";
 
 // const getProjectName = () => {
 //   return new Promise<string>(async (resolve, _) => {

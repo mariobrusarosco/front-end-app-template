@@ -18,6 +18,7 @@
     "inquirer": "^8.1.2",
     "inquirer-autocomplete-prompt": "^1.4.0",
     "jest": "^27.0.6",
+    "lodash": "^4.17.21",
     "toml": "^3.0.0",
     "tslib": "^1",
     "yaml": "^1.10.2",
@@ -27,6 +28,7 @@
     "@jest/types": "^27.0.6",
     "@types/inquirer": "^7.3.3",
     "@types/jest": "^26.0.24",
+    "@types/lodash": "^4.14.172",
     "@types/node": "^16.4.13",
     "@types/yargs": "^17.0.2",
     "chai": "^4.3.4",
@@ -34,6 +36,7 @@
     "eslint": "^5.13",
     "eslint-config-oclif": "^3.1",
     "eslint-config-oclif-typescript": "^0.1",
+    "lodash": "^4.17.21",
     "ts-jest": "^27.0.4",
     "ts-node": "^8",
     "typescript": "^3.3"
