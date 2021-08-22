@@ -33,3 +33,13 @@ export const printFileCreationProcess = (createdFiles: string[]) => {
 
   printFileCreationResult(createdFiles.length);
 };
+
+export const printConfigurationError = (error: Error | string) => {
+  console.log(
+    chalk.redBright(`
+[CONFIGURATION ERROR] - Please, reach the 'Config Doc'and check if your .toml file matches the mandatory configuration schema
+
+ERROR: ${error}
+`)
+  );
+};
