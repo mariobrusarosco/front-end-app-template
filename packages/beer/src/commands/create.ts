@@ -2,19 +2,14 @@ import chalk from "chalk";
 import { AvailableCommands } from "./enums";
 import { CLICommand } from "./interfaces";
 import questions from "../questions";
-import {
-  printFileCreation,
-  printFileCreationProcess,
-  printFileCreationResult,
-} from "../io";
+import { printCommandInitialMessage, printFileCreationProcess } from "../io";
 import config from "../config";
 import path from "path";
 import { parseElementVariables } from "../reactElements";
 import { copyAndParseTemplates } from "../FileSystem";
-const copy = require("copy-template-dir");
 
 const run = async () => {
-  console.log(chalk.green("Creating your React Element...\n"));
+  printCommandInitialMessage("NEW ELEMENT");
 
   const { domainName } = await questions.askAboutCurrentDomains();
   const { reactElementType } = await questions.askAboutReactElementType();

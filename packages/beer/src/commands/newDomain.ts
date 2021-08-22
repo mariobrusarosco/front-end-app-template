@@ -4,7 +4,6 @@ import questions from "../questions";
 import config from "../config";
 import path from "path";
 import { printCommandInitialMessage, printFileCreationProcess } from "../io";
-import _ from "lodash";
 import { copyAndParseTemplates } from "../FileSystem";
 
 const { architecture, domains } = config;
@@ -12,7 +11,7 @@ const architectureType = architecture.type;
 const currentWorkingDirectory = process.cwd();
 
 const run = async () => {
-  printCommandInitialMessage("Creating your new Domain...");
+  printCommandInitialMessage("NEW DOMAIN");
 
   const domainName = await questions.askAboutNewDomainName();
 

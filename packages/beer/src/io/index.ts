@@ -10,7 +10,13 @@ export const printFileCreationResult = (numberOfFiles: number) => {
 };
 
 export const printCommandInitialMessage = (message: string) => {
-  console.log(chalk.green(`\n ${message}`));
+  console.log(
+    chalk.yellowBright(`
+-------------------
+  ${message}
+-------------------
+`)
+  );
 };
 
 export const printFileCreation = (filePath: string) =>
@@ -21,7 +27,7 @@ export const printFileCreationProcess = (createdFiles: string[]) => {
     chalk.yellowBright(`
 -------------------
 
-    Order: 3243
+    Order: ${Math.random().toString().slice(2, 6)}
 
 -------------------
 `)
