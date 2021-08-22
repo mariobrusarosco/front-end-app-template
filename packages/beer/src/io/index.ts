@@ -1,14 +1,5 @@
 import chalk from "chalk";
 
-export const printFileCreationResult = (numberOfFiles: number) => {
-  console.log(
-    chalk.yellowBright(
-      "----------------------------------------------------------------------------------------------------------------\n\n"
-    )
-  );
-  console.log(chalk.yellowBright(chalk.bold(`TOTAL: ${numberOfFiles}`)));
-};
-
 export const printCommandInitialMessage = (message: string) => {
   console.log(
     chalk.yellowBright(`
@@ -37,7 +28,13 @@ export const printFileCreationProcess = (createdFiles: string[]) => {
 
   createdFiles.forEach((filePath) => printFileCreation(filePath));
 
-  printFileCreationResult(createdFiles.length);
+  console.log(
+    chalk.yellowBright(
+      "----------------------------------------------------------------------------------------------------------------\n\n"
+    )
+  );
+
+  console.log(chalk.yellowBright(chalk.bold(`TOTAL: ${createdFiles.length}`)));
 };
 
 export const printConfigurationError = (error: Error | string) => {

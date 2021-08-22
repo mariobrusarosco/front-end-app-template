@@ -9,8 +9,6 @@ const fs = require("fs");
 
 const currentWorkingDir = process.cwd();
 
-console.log({ currentWorkingDir });
-
 const createCnfig = () => {
   try {
     const config = toml.parse(
