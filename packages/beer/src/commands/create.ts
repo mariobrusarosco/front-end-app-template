@@ -65,6 +65,7 @@ const createCommand: CLICommand = {
   command: AvailableCommands.CREATE,
   describe: "Creates a React Element",
   handler: run,
+  aliases: ["consagrado"],
 };
 
 export default createCommand;

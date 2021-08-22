@@ -44,6 +44,7 @@ const newDomainCommand: CLICommand = {
   command: AvailableCommands.NEW_DOMAIN,
   describe: "Creates a new domain",
   handler: run,
+  aliases: ["rodada"],
 };
 
 export default newDomainCommand;
