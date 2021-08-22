@@ -20,3 +20,17 @@ export const copyAndParseTemplates = ({
     handleFileCreation
   );
 };
+
+export const copyAndMovePocTemplate = ({
+  templateFolder,
+  destinationFolder,
+  templateVariables = {},
+  handleFileCreation,
+}: Props) => {
+  copy(
+    templateFolder,
+    destinationFolder,
+    templateVariables,
+    handleFileCreation
+  );
+};

@@ -1,0 +1,19 @@
+@mixin above($size) {
+  @media (min-width: $size) {
+    @content;
+  }
+}
+
+@mixin below($size) {
+  @media (max-width: $size - 1) {
+    @content;
+  }
+}
+
+@mixin animationDuration($numberOfItems, $delay) {
+  @for $i from 1 through $numberOfItems {
+    &:nth-child(#{$i}) {
+      animation-duration: $delay * $i;
+    }
+  }
+}

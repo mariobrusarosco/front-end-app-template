@@ -5,6 +5,7 @@ import initCommand from "./commands/init";
 import createCommand from "./commands/create";
 import newDomainCommand from "./commands/newDomain";
 import { AvailableCommands } from "./commands/enums";
+import pocCommand from "./commands/poc";
 
 const typedCommands = hideBin(process.argv);
 
@@ -12,7 +13,8 @@ const typedCommands = hideBin(process.argv);
 yargs(typedCommands)
   .command(initCommand)
   .command(createCommand)
-  .command(newDomainCommand);
+  .command(newDomainCommand)
+  .command(pocCommand);
 
 // Groups
 yargs.group(

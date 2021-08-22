@@ -1,0 +1,59 @@
+.defaultPaginationArea {
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+// Global Access
+:global {
+  .rc-pagination-item-active {
+    background-color: $primary-color;
+    background-color: var(--primary-color);
+    border-color: $primary-color;
+    border-color: var(--primary-color);
+  }
+
+  .rc-pagination-item:hover {
+    border-color: $primary-color;
+    border-color: var(--primary-color);
+  }
+
+  .rc-pagination-item {
+    will-change: border-color;
+    transition: border-color 0.25s ease-in;
+  }
+
+  .rc-pagination-item a {
+    will-change: color;
+    transition: color 0.25s ease-out;
+  }
+
+  .rc-pagination-item:hover a {
+    color: $primary-color;
+    color: var(--primary-color);
+  }
+
+  .rc-pagination-item-active:hover a {
+    color: #fff;
+  }
+
+  .rc-pagination-prev,
+  .rc-pagination-next,
+  .rc-pagination-jump-prev,
+  .rc-pagination-jump-next,
+  .rc-pagination-item {
+    @include below(375px) {
+      min-width: 25px;
+    }
+
+    @include above(768px) {
+      min-width: $paginator-tablet-size;
+      min-width: var(--paginator-tablet-size);
+      height: $paginator-tablet-size;
+      height: var(--paginator-tablet-size);
+      line-height: $paginator-tablet-size;
+      line-height: var(--paginator-tablet-size);
+      font-size: 15px;
+    }
+  }
+}
