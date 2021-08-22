@@ -1,4 +1,4 @@
 {
   "private": true,
-  "workspaces": ["packages/*", "playground", "employee-app", "planner-app"]
+  "workspaces": ["packages/*", "playground", "employee-app", "planner-app", "poc"]
 }

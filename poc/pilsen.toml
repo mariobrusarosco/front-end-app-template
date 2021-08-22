@@ -1,0 +1,15 @@
+# Beer configuration data
+
+[domains]
+pathToDomainsFolder = ""
+includes=[]
+excludes=[]
+
+[architecture]
+type = "poc"
+
+[reactElements]
+
+
+
+

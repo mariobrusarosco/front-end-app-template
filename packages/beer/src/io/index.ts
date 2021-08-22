@@ -20,7 +20,7 @@ export const printCommandInitialMessage = (message: string) => {
 };
 
 export const printFileCreation = (filePath: string) =>
-  console.log(`${chalk.yellowBright(`1    ${filePath}`)}`);
+  console.log(`${chalk.yellowBright(`1       ${filePath}`)}`);
 
 export const printFileCreationProcess = (createdFiles: string[]) => {
   console.log(
@@ -33,7 +33,7 @@ export const printFileCreationProcess = (createdFiles: string[]) => {
 `)
   );
 
-  console.log(chalk.yellowBright(`\nQty. \t\n`));
+  console.log(chalk.yellowBright(chalk.bold(`\nQty.   Description\n`)));
 
   createdFiles.forEach((filePath) => printFileCreation(filePath));
 
