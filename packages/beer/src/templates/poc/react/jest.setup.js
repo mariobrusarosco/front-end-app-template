@@ -1,0 +1,1 @@
+globalThis.React = require("react");
