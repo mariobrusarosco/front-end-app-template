@@ -23,7 +23,6 @@ yargs(typedCommands)
   // .usage("")
   .demandCommand()
   .command(createCommand)
-  .options({})
   .help()
   .epilog("Build Elegant Elements for React - 2021").argv;
 
