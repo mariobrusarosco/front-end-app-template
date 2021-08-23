@@ -32,7 +32,8 @@ const currentWorkingDirectory = process.cwd();
 const createPocCommand = async () => {
   printCommandInitialMessage("NEW POC");
 
-  const pocName = await questions.askAboutPocName();
+  const { pocName } = await questions.askAboutPocName();
+  const { pocType } = await questions.askAboutPocType();
 
   const templateFolder = path.join(
     __dirname,
@@ -40,9 +41,16 @@ const createPocCommand = async () => {
     "..",
     "templates",
     "poc",
-    "vanilla"
+    pocType
   );
   const destinationFolder = path.join(currentWorkingDirectory, pocName);
+
+  console.log({
+    pocName,
+    pocType,
+    templateFolder,
+    destinationFolder,
+  });
 
   copyAndMovePocTemplate({
     templateFolder,

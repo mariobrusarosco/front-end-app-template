@@ -21,5 +21,5 @@ export const pocName = async (): Promise<string | Promise<any>> => {
     return pocName();
   }
 
-  return givenName.trim().replace(/\s+/gim, "-");
+  return { pocName: givenName.trim().replace(/\s+/gim, "-") };
 };

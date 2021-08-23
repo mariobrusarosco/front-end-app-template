@@ -17,10 +17,12 @@ const CounterProvider: React.FC = ({ children }) => {
 
   return (
     <Provider
-      value={{
+      value={
+        {
         counter,
         increment,
-      }}
+      }
+    }
     >
       {children}
     </Provider>

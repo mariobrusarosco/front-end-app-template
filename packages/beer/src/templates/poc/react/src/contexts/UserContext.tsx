@@ -24,12 +24,14 @@ const UserProvider: React.FC = ({ children }) => {
 
   return (
     <Provider
-      value={{
+      value={
+        {
         state: {
           ...user,
         },
         setUser,
-      }}
+      }
+    }
     >
       {children}
     </Provider>

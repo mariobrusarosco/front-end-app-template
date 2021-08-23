@@ -26,7 +26,8 @@ const User: React.FC = () => {
             </button>
           </div>
         );
-      }}
+      }
+    }
     </UserConsumer>
   );
 };

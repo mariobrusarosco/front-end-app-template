@@ -7,10 +7,12 @@ describe("Components | Counter", () => {
   it("renders Counter's display", () => {
     const { getByText } = render(
       <CounterContext.Provider
-        value={{
+        value={
+          {
           counter: 4,
           increment: jest.fn(),
-        }}
+        }
+      }
       >
         <Counter />
       </CounterContext.Provider>
