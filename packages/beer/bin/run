@@ -6,13 +6,11 @@ const isDevMode = process.env.DEV_MODE == "true"
 
 
 if(isDevMode) {
-  console.log("Drinking beer - Development mode")
+  console.log("Development mode")
 
   require('ts-node').register({ project: tsConfig })
   require('../src').default
 
 } else {
-  console.log("Drinking beer")
-
   return require('../lib').default
 }

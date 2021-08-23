@@ -1,26 +1,25 @@
-import chalk from "chalk";
-import { AvailableCommands } from "./enums";
-import { CLICommand } from "./interfaces";
-import questions from "../questions";
-import { printCommandInitialMessage, printFileCreationProcess } from "../io";
-import config from "../config";
 import path from "path";
-import { parseElementVariables } from "../reactElements";
-import { copyAndParseTemplates } from "../FileSystem";
+import config from "../../config";
+import { copyAndParseTemplates } from "../../FileSystem";
+import { printCommandInitialMessage, printFileCreationProcess } from "../../io";
+import questions from "../../questions";
+import { parseElementVariables } from "../../reactElements";
 
-const run = async () => {
+const architectureReactElements = config.reactElements;
+
+const createElementCommand = async (args: any) => {
   printCommandInitialMessage("NEW ELEMENT");
 
   const { domainName } = await questions.askAboutCurrentDomains();
   const { reactElementType } = await questions.askAboutReactElementType();
   const { reactElementName } = await questions.askAboutReactElementName();
 
-  const architectureReactElements = config.reactElements;
   const selectedElementMetadata = architectureReactElements[reactElementType];
 
   const templateFolder = path.join(
     __dirname,
-    "../",
+    "..",
+    "..",
     "templates",
     config.architecture.type,
     selectedElementMetadata.elementFolder
@@ -56,11 +55,4 @@ const run = async () => {
   });
 };
 
-const createCommand: CLICommand = {
-  command: AvailableCommands.CREATE,
-  describe: "Creates a React Element",
-  handler: run,
-  aliases: ["consagrado"],
-};
-
-export default createCommand;
+export default createElementCommand;

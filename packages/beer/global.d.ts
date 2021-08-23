@@ -1,1 +1,1 @@
-// declare module 'copy-template-dir'
+declare module "app-root-path";

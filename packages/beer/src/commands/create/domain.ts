@@ -1,22 +1,21 @@
-import { AvailableCommands } from "./enums";
-import { CLICommand } from "./interfaces";
-import questions from "../questions";
-import config from "../config";
 import path from "path";
-import { printCommandInitialMessage, printFileCreationProcess } from "../io";
-import { copyAndParseTemplates } from "../FileSystem";
+import config from "../../config";
+import { copyAndParseTemplates } from "../../FileSystem";
+import { printCommandInitialMessage, printFileCreationProcess } from "../../io";
+import questions from "../../questions";
 
 const { architecture, domains } = config;
 const architectureType = architecture.type;
 const currentWorkingDirectory = process.cwd();
 
-const newDomainCommand = async () => {
+const createDomainCommand = async () => {
   printCommandInitialMessage("NEW DOMAIN");
 
   const domainName = await questions.askAboutNewDomainName();
 
   const templateFolder = path.join(
     __dirname,
+    "..",
     "..",
     "templates",
     architectureType,
@@ -31,6 +30,7 @@ const newDomainCommand = async () => {
   copyAndParseTemplates({
     templateFolder,
     destinationFolder,
+    // TODO Abstract!
     handleFileCreation: (err, createdFiles) => {
       if (err) throw err;
 
@@ -39,11 +39,4 @@ const newDomainCommand = async () => {
   });
 };
 
-// const newDomainCommand: CLICommand = {
-//   command: AvailableCommands.NEW_DOMAIN,
-//   describe: "Creates a new domain",
-//   handler: run,
-//   aliases: ["rodada"],
-// };
-
-export default newDomainCommand;
+export default createDomainCommand;

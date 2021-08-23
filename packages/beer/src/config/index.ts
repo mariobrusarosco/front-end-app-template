@@ -2,7 +2,6 @@ import { printConfigurationError } from "../io";
 import { getDomainsFolders } from "./domains";
 import { Configuration, DomainsConfig, ReactElementsConfig } from "./enums";
 // const { cosmiconfig, cosmiconfigSync } = require("cosmiconfig");
-// var appRoot = require("app-root-path");
 
 const toml = require("toml");
 const fs = require("fs");

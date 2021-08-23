@@ -1,26 +1,33 @@
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
-
-import initCommand from "./commands/init";
 import createCommand from "./commands/create";
-import newDomainCommand from "./commands/newDomain";
-import { AvailableCommands } from "./commands/enums";
-import pocCommand from "./commands/poc";
 
 const typedCommands = hideBin(process.argv);
 
-// Commands
 yargs(typedCommands)
-  .command(initCommand)
+  .usage(`-------`)
+  .demandCommand(1)
   .command(createCommand)
-  .command(newDomainCommand)
-  .command(pocCommand);
+  .options({})
+  .help()
+  .epilog("Beer CLI - 2021").argv;
+
+// yargs(typedCommands)
+//   .usage(`-------`)
+//   .demandCommand(1)
+//   .option("h", {
+//     alias: "help",
+//   })
+//   .command(createCommand)
+//   .help()
+//   .epilog("Beer CLI - 2021").argv;
 
 // Groups
-yargs.group(
-  [AvailableCommands.CREATE, AvailableCommands.NEW_DOMAIN],
-  "Commands for active origin projects"
-);
+// yargs.group(
+//   [AvailableCommands.CREATE, AvailableCommands.NEW_DOMAIN],
+//   "Commands for active origin projects"
+// );
 
-// HELP
-yargs.alias(["cardapio", "menu"], "help").help().argv;
+// // HELP
+// yargs.alias(["cardapio", "menu"], "help").help().epilog("2021").completion()
+//   .argv;

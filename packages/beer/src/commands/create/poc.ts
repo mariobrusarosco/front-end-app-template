@@ -1,11 +1,10 @@
-import { copyAndMovePocTemplate } from "../FileSystem";
-import { printCommandInitialMessage, printFileCreationProcess } from "../io";
-import { AvailableCommands } from "./enums";
-import { CLICommand } from "./interfaces";
 import path from "path";
-import questions from "../questions";
 import { spawn } from "child_process";
 import chalk from "chalk";
+import { printCommandInitialMessage, printFileCreationProcess } from "../../io";
+import questions from "../../questions";
+import { copyAndMovePocTemplate } from "../../FileSystem";
+var appRoot = require("app-root-path");
 
 const installPocProject = (pocName: string) =>
   new Promise((resolve, reject) => {
@@ -30,13 +29,14 @@ const runPocProject = (pocName: string) =>
 
 const currentWorkingDirectory = process.cwd();
 
-const run = async () => {
+const createPocCommand = async () => {
   printCommandInitialMessage("NEW POC");
 
   const pocName = await questions.askAboutPocName();
 
   const templateFolder = path.join(
     __dirname,
+    "..",
     "..",
     "templates",
     "poc",
@@ -76,10 +76,4 @@ const run = async () => {
   });
 };
 
-const pocCommand: CLICommand = {
-  command: AvailableCommands.POC,
-  describe: "Initialize a POC",
-  handler: run,
-};
-
-export default pocCommand;
+export default createPocCommand;
