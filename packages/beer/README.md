@@ -2,7 +2,23 @@
 
 # Build Elegant Elements for React
 
-# BEER
+# Beer
+
+        o©ºº©oo©oº°©
+        /           \
+        |___________|____
+        |            |____)
+        |  B E E R   |  | |
+        |            |  | |
+        |   F O R    |  | |
+        |            |  | |
+        |   Y O U    |  | |
+        |            |__|_|
+        |            |____)
+        |____________|
+        (______________)
+
+        HAVE A COLD ONE ON ME!!
 
 - [install](#install)
 - [Help](#help)
@@ -34,5 +50,3 @@ $ beer COMMAND
 ```sh-session
 
 ```
-
-

@@ -1,16 +1,31 @@
+import chalk from "chalk";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 import createCommand from "./commands/create";
 
 const typedCommands = hideBin(process.argv);
 
+console.log(
+  chalk.yellowBright(
+    `
+
+   ]~,"-.-~~[
+ .=])' (;  ([
+ | ]:: '    [
+ '=]): .)  ([
+   |:: '    |
+    ~~----~~
+  `
+  )
+);
+
 yargs(typedCommands)
-  .usage(`-------`)
-  .demandCommand(1)
+  // .usage("")
+  .demandCommand()
   .command(createCommand)
   .options({})
   .help()
-  .epilog("Beer CLI - 2021").argv;
+  .epilog("Build Elegant Elements for React - 2021").argv;
 
 // yargs(typedCommands)
 //   .usage(`-------`)
