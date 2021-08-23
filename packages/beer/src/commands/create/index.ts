@@ -17,8 +17,6 @@ const run = async (args: any) => {
   const target = args.target;
   const subCommand = createSubCommands[target];
 
-  console.log({ target });
-
   subCommand();
 };
 

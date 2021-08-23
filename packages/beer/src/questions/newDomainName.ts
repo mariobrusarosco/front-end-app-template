@@ -1,4 +1,5 @@
 import Inquirer from "inquirer";
+import config from "../config";
 
 export const newDomainName = async (): Promise<string | Promise<any>> => {
   const question = [
@@ -13,10 +14,19 @@ export const newDomainName = async (): Promise<string | Promise<any>> => {
     question
   );
 
-  if (!domainName) {
+  const emptyGivenDomain = !domainName;
+  const domainExists = config.domains.folders.includes(domainName);
+
+  if (emptyGivenDomain) {
     console.log(
-      `You must provide a name for your new domain to continue the process`
+      "You must provide a name for your new domain to continue the process"
     );
+
+    return newDomainName();
+  }
+
+  if (domainExists) {
+    console.log("This domain already exists. Please type a new domain name");
 
     return newDomainName();
   }

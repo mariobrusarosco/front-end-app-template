@@ -14,10 +14,8 @@ const searchForDomains = (_: any, input: string = "") => {
     .filter(input, domainsFolders)
     .map((item) => item.original);
 
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(results);
-    }, 400);
+  return new Promise((resolve) => {
+    resolve(results);
   });
 };
 
