@@ -22,19 +22,10 @@ const run = async (args: any) => {
 
 const createCommand: CLICommand = {
   command: `${AvailableCommands.CREATE} <target>`,
-  describe: "Creates a React Element, a Domain or a POC",
+  describe: "Creates a React Element: element|domain|poc",
   aliases: ["consagrado"],
-  builder: (yargs: Argv) => yargs.default("value", "true"),
+  // builder: (yargs: Argv) => yargs.default("value", "true"),
   handler: run,
 };
-
-// const createCommand: CLICommand = {
-//   command: "status <key>",
-//   describe: "Creates a React Element, a Domain or a POC",
-//   // aliases: ["consagrado"],
-//   // builder: (yargs: Argv) => yargs.default("value", "true"),
-//   builder: (yargs: Argv) => yargs.default("value", "true"),
-//   handler: run,
-// };
 
 export default createCommand;

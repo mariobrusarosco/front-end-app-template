@@ -7,6 +7,7 @@
 
 export const AvailableCommands = {
   CREATE: "create",
+  GENERATE: "generate",
   INIT: "init",
 };
 

@@ -7,6 +7,7 @@ excludes=[]
 
 [architecture]
 type = "legacy"
+domains_folder_name="domain"
 
 [reactElements]
 

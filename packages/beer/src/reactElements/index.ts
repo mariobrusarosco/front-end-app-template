@@ -1,4 +1,4 @@
-import path from "path";
+import { join } from "path";
 import { ReactElementMetadata } from "../architecture";
 import config from "../config";
 import {
@@ -10,28 +10,23 @@ import { capitalize } from "lodash";
 
 export const parseElementVariables = ({
   reactElementName,
-  // domainsFolderName,
   domainName,
   selectedElementMetadata,
 }: {
   reactElementName: string;
-  // domainsFolderName: string;
   domainName: string;
   selectedElementMetadata: any;
 }) => {
-  // Domains | Messaging | UI | Components | MessagingDrawer
-  // const test = ["domains", ...elementFolder.split("/")];
-
-  const a = selectedElementMetadata.elementTestTitle
+  const elementTestTitle = selectedElementMetadata.elementTestTitle
     .replace(":domainName", capitalize(domainName))
-    .replace(":reactElementName", reactElementName);
-  const b = selectedElementMetadata.elementAbsolutePath
+    .replace(/:reactElementName/gim, reactElementName);
+  const elementAbsolutePath = selectedElementMetadata.elementAbsolutePath
     .replace(":domainName", domainName)
-    .replace(":reactElementName", reactElementName);
+    .replace(/:reactElementName/gim, reactElementName);
 
   return {
-    elementTestTitle: a,
-    elementAbsolutePath: b,
+    elementTestTitle,
+    elementAbsolutePath,
   };
 };
 
@@ -48,29 +43,27 @@ export const buildelementTestTitle = ({
 }) => {
   return "Domains | Messaging | UI | Components | MessagingDrawer";
 };
-// export const generateElementMetadata = ({
-//   domainName,
-//   reactElementType,
-//   reactElementName,
-// }: {
-//   domainName: string;
-//   reactElementType: ReactElementTypes;
-//   reactElementName: string;
-// }) => {
-//   const selectedMetadata = elementsMetadata[reactElementType];
-//   const destinationFolder = path.join(
-//     process.cwd(),
-//     config.domains.pathToDomainsFolder,
-//     domainName,
-//     selectedMetadata.elementFolder
-//   );
-//   const templateFolder = path.join(
-//     __dirname,
-//     "..",
-//     "templates",
-//     "react",
-//     selectedMetadata.templateFolder
-//   );
 
-//   return { destinationFolder, templateFolder, reactElementName };
-// };
+const cwd = process.cwd();
+
+export const parseTargetVariables = ({
+  path,
+  target,
+}: {
+  path: string;
+  target: string;
+}) => {
+  const paths = path?.split("/");
+  const element = paths[paths.length - 1];
+  const elementPath = paths.slice(0, paths.length - 1).join("/");
+
+  const templateFolder = `${__dirname}/../templates/${config.architecture.type}/${target}`;
+  const destinationFolder = `${cwd}/src/${config.architecture.domains_folder_name}/${elementPath}`;
+
+  return {
+    element,
+    elementPath,
+    templateFolder,
+    destinationFolder,
+  };
+};
