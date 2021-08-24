@@ -1,6 +1,6 @@
 {
   "name": "my-beer",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "author": "Mario Brusarosco",
   "bin": {
     "beer": "./bin/run"
