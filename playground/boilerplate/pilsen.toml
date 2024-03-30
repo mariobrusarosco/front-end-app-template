@@ -1,0 +1,32 @@
+# Beer configuration data
+
+[domains]
+pathToDomainsFolder = "src/domains"
+includes=[]
+excludes=[]
+
+[architecture]
+type = "default"
+
+[reactElements]
+
+[reactElements.component]
+  elementFolder = "ui/components"
+  reactElementType = "component"
+  elementTestTitle = "Domains | :domainName | UI | Components | :reactElementName"
+  elementAbsolutePath = "@domains/:domainName/ui/components/:reactElementName"
+
+[reactElements.hook]
+  elementFolder = "ui/hooks"
+  reactElementType = "hook"
+  elementTestTitle = "Domains | :domainName | UI | Hooks | :reactElementName"
+  elementAbsolutePath = "@domains/:domainName/ui/hooks/:reactElementName"
+
+[reactElements.service]
+  elementFolder = "application/services"
+  reactElementType = "service"
+  elementTestTitle = "Domains | :domainName | Application | Services | :reactElementName"
+  elementAbsolutePath = "@domains/:domainName/application/services/:reactElementName"
+
+
+
