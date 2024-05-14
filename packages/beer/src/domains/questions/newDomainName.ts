@@ -1,5 +1,5 @@
 import Inquirer from "inquirer";
-import config from "../config";
+import config from "../user-config";
 
 export const newDomainName = async (): Promise<string | Promise<any>> => {
   const question = [

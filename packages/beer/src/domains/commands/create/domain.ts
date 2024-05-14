@@ -1,8 +1,11 @@
 import path from "path";
-import config from "../../config";
-import { copyAndParseTemplates } from "../../FileSystem";
-import { printCommandInitialMessage, printFileCreationProcess } from "../../io";
-import questions from "../../questions";
+import config from "../../domains/config";
+import { copyAndParseTemplates } from "../../domains/FileSystem";
+import {
+  printCommandInitialMessage,
+  printFileCreationProcess,
+} from "../../domains/io";
+import questions from "../../domains/questions";
 
 const { architecture, domains } = config;
 const architectureType = architecture.type;

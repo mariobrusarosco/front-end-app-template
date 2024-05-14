@@ -1,6 +1,6 @@
 import { join } from "path";
 import { ReactElementMetadata } from "../architecture";
-import config from "../config";
+import config from "../user-config";
 import {
   reactElementMetadata,
   ReactElementTypes,

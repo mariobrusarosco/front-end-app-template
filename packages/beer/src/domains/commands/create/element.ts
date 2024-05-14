@@ -1,9 +1,12 @@
 import path from "path";
-import config from "../../config";
-import { copyAndParseTemplates } from "../../FileSystem";
-import { printCommandInitialMessage, printFileCreationProcess } from "../../io";
-import questions from "../../questions";
-import { parseElementVariables } from "../../reactElements";
+import config from "../../domains/config";
+import { copyAndParseTemplates } from "../../domains/FileSystem";
+import {
+  printCommandInitialMessage,
+  printFileCreationProcess,
+} from "../../domains/io";
+import questions from "../../domains/questions";
+import { parseElementVariables } from "../../domains/reactElements";
 
 const architectureReactElements = config.reactElements;
 

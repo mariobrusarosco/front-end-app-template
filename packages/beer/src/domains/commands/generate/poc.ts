@@ -1,9 +1,12 @@
 import path from "path";
 import { spawn } from "child_process";
 import chalk from "chalk";
-import { printCommandInitialMessage, printFileCreationProcess } from "../../io";
-import questions from "../../questions";
-import { copyAndMovePocTemplate } from "../../FileSystem";
+import {
+  printCommandInitialMessage,
+  printFileCreationProcess,
+} from "../../domains/io";
+import questions from "../../domains/questions";
+import { copyAndMovePocTemplate } from "../../domains/FileSystem";
 var appRoot = require("app-root-path");
 
 const installPocProject = (pocName: string) =>

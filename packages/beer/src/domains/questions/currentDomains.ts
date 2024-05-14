@@ -1,6 +1,6 @@
 import Inquirer from "inquirer";
 import fuzzy from "fuzzy";
-import config from "../config";
+import config from "../user-config";
 
 Inquirer.registerPrompt(
   "autocomplete",

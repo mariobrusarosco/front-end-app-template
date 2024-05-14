@@ -1,8 +1,11 @@
 import path from "path";
-import { copyAndParseTemplates } from "../../FileSystem";
-import { printCommandInitialMessage, printFileCreationProcess } from "../../io";
-import questions from "../../questions";
-import { parseTargetVariables } from "../../reactElements";
+import { copyAndParseTemplates } from "../../domains/FileSystem";
+import {
+  printCommandInitialMessage,
+  printFileCreationProcess,
+} from "../../domains/io";
+import questions from "../../domains/questions";
+import { parseTargetVariables } from "../../domains/reactElements";
 
 const createElementCommand = async (args: any) => {
   printCommandInitialMessage(`NEW ${args.target}`);
