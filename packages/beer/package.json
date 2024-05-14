@@ -2,6 +2,20 @@
   "name": "my-beer",
   "version": "0.1.0",
   "author": "Mario Brusarosco",
+  "keywords": [
+    "beer"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "repository": "mariobrusarosco/my-beer",
+  "scripts": {
+    "move-template-to-lib-folder": "cp -r src/templates lib",
+    "posttest": "eslint . --ext .ts --config .eslintrc",
+    "build": "rm -rf ./lib && tsc && yarn move-template-to-lib-folder",
+    "test": "jest",
+    "dev": "tsc -watch"
+  },
+  "types": "lib/index.d.ts",
   "bin": {
     "beer": "./bin/run"
   },
@@ -53,19 +67,5 @@
     "/bin",
     "/lib"
   ],
-  "homepage": "https://github.com/mariobrusarosco/my-beer",
-  "keywords": [
-    "beer"
-  ],
-  "license": "MIT",
-  "main": "lib/index.js",
-  "repository": "mariobrusarosco/my-beer",
-  "scripts": {
-    "move-template-to-lib-folder": "cp -r src/templates lib",
-    "posttest": "eslint . --ext .ts --config .eslintrc",
-    "build": "rm -rf ./lib && tsc && yarn move-template-to-lib-folder",
-    "test": "jest",
-    "dev": "tsc -watch"
-  },
-  "types": "lib/index.d.ts"
+  "homepage": "https://github.com/mariobrusarosco/my-beer"
 }

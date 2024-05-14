@@ -8,11 +8,6 @@
     "strict": true,
     "esModuleInterop": true
   },
-  "include": [
-    "src/**/*",
-    "global.d.ts",
-  ],
-  "exclude": [
-    "src/templates"
-  ]
+  "include": ["src/**/*", "global.d.ts"],
+  "exclude": ["src/domains/deprecated"]
 }
