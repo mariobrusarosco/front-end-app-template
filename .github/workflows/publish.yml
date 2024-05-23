@@ -19,9 +19,8 @@ jobs:
       - run: rm package.json
       - run: ls -al
       - run: mkdir eita
-      - run: cd ./packages
+      - run: cd ./eita
       - run: ls -al
-      - run: cd ..
       - run: ls
       # - run: yarn publish --access public
       #   env:
