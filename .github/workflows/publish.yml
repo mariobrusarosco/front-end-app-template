@@ -22,15 +22,15 @@ jobs:
       # - run: rm package.json
       # run: ls -al
       # run: mkdir eita
-      # run: |
-      #     cd ./eita
-      # run: ls . -al
-      # run: pwd
+      - run: |
+          cd ./eita
+      - run: ls . -al
       - name: Experiment
         run: |
           pwd             # /home/runner/work/try/try
           mkdir hello
           cd hello
+          ls
           pwd             # /home/runner/work/try/try/hello
       # - run: yarn publish --access public
       #   env:
