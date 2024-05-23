@@ -20,10 +20,8 @@ jobs:
       #     registry-url: "https://registry.npmjs.org"
       # Removing the package.json file to disbale Yarn Worskpace behavior. Reach out the docs to understand the rationale
       - run: rm package.json
-      # run: ls -al
-      - run: |
-          cd ./packages/beer && ls -al
-      - run: ls . -al
+      - run:
+        working-directory: ./packages/beer
       - name: Experiment
         run: |
           yarn
