@@ -21,7 +21,7 @@ jobs:
       - name: Install Project
         run: yarn
       - name: Build Project
-        run: yarn buil
+        run: yarn build
       - name: Publish Project
         run: yarn publish
         env:
