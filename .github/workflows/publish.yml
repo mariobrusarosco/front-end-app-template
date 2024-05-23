@@ -21,7 +21,7 @@ jobs:
       # Removing the package.json file to disbale Yarn Worskpace behavior. Reach out the docs to understand the rationale
       # - run: rm package.json
       # run: ls -al
-      # run: mkdir eita
+      - run: mkdir eita
       - run: |
           cd ./eita
       - run: ls . -al
