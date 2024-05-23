@@ -18,6 +18,7 @@ jobs:
       # Removing the package.json file to disbale Yarn Worskpace behavior. Reach out the docs to understand the rationale
       - run: rm package.json
       - run: ls -al
+      - run: makedir eita
       - run: "cd packages"
       - run: ls -al
       # - run: yarn publish --access public
