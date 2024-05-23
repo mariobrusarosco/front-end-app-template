@@ -27,11 +27,7 @@ jobs:
       - run: ls . -al
       - name: Experiment
         run: |
-          pwd             # /home/runner/work/try/try
-          mkdir hello
-          cd hello
-          ls
-          pwd             # /home/runner/work/try/try/hello
+          pwd
       # - run: yarn publish --access public
       #   env:
       #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
