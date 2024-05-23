@@ -8,6 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./packages
     steps:
       - uses: actions/checkout@v4
       # Setup .npmrc file to publish to npm
@@ -17,11 +20,11 @@ jobs:
       #     registry-url: "https://registry.npmjs.org"
       # Removing the package.json file to disbale Yarn Worskpace behavior. Reach out the docs to understand the rationale
       # - run: rm package.json
-      - run: |
-          mkdir eita
-          cd eita
-          ls
-
+      - run: ls -al
+      - run: mkdir eita
+      - run: cd ./eita
+      - run: ls -al
+      - run: ls
       # - run: yarn publish --access public
       #   env:
       #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
