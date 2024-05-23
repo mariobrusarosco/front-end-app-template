@@ -21,9 +21,11 @@ jobs:
       # Removing the package.json file to disbale Yarn Worskpace behavior. Reach out the docs to understand the rationale
       - name: Removing Yarn Workspace Package.json
         run: rm ../../package.json
-      - name: Experiment
-        run: |
-          yarn
-          yarn publish
+      - name: Install Project
+        run: yarn
+      - name: Build Project
+        run: yarn
+      - name: Publish Project
+        run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
