@@ -1,8 +1,5 @@
 name: Publish Package
 on:
-  push:
-    branches:
-      - main
   release:
     types: [published]
 jobs:
@@ -24,7 +21,7 @@ jobs:
       - name: Install Project
         run: yarn
       - name: Build Project
-        run: yarn
+        run: yarn buil
       - name: Publish Project
         run: yarn publish
         env:
