@@ -8,11 +8,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./packages
+    # defaults:
+    #   run:
+    #     working-directory: ./packages
     steps:
-      - uses: actions/checkout@v4
+      # - uses: actions/checkout@v4
       # Setup .npmrc file to publish to npm
       # - uses: actions/setup-node@v4
       #   with:
