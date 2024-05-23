@@ -23,7 +23,7 @@ jobs:
       # run: ls -al
       - run: mkdir eita
       - run: |
-          cd ./packages/beer
+          cd ./packages/beer && ls -al
       - run: ls . -al
       - name: Experiment
         run: |
