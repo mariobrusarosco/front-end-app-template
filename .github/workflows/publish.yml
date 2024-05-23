@@ -8,23 +8,22 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # defaults:
-    #   run:
-    #     working-directory: ./packages
+    defaults:
+      run:
+        working-directory: ./packages/beer
     steps:
       - uses: actions/checkout@v4
       # Setup .npmrc file to publish to npm
-      # - uses: actions/setup-node@v4
-      #   with:
-      #     node-version: "20.x"
-      #     registry-url: "https://registry.npmjs.org"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          registry-url: "https://registry.npmjs.org"
       # Removing the package.json file to disbale Yarn Worskpace behavior. Reach out the docs to understand the rationale
-      - run: rm package.json
-      - run:
-        working-directory: ./packages/beer
+      - name: Removing Yarn Workspace Package.json
+        run: rm ../../package.json
       - name: Experiment
         run: |
           yarn
-      - run: yarn publish
+          yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
