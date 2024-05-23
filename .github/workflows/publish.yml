@@ -11,15 +11,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       # Setup .npmrc file to publish to npm
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20.x"
-          registry-url: "https://registry.npmjs.org"
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version: "20.x"
+      #     registry-url: "https://registry.npmjs.org"
       # Removing the package.json file to disbale Yarn Worskpace behavior. Reach out the docs to understand the rationale
       - run: rm package.json
       - run: ls -al
       - run: mkdir eita
-      - run: "cd packages"
+      - run: cd ./packages
       - run: ls -al
       - run: cd ..
       - run: ls
