@@ -21,6 +21,8 @@ jobs:
       - run: makedir eita
       - run: "cd packages"
       - run: ls -al
+      - run: cd ..
+      - run: ls
       # - run: yarn publish --access public
       #   env:
       #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
