@@ -26,7 +26,7 @@ jobs:
       - run: ls . -al
       - name: Experiment
         run: |
-          pwd
+          cwd
           yarn
       # - run: yarn publish --access public
       #   env:
