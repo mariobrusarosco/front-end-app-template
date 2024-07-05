@@ -4,10 +4,10 @@ interface Props {
   lorem: string
 }
 
-const {{templateVariables}}: React.FunctionComponent<Props> = ({
+const {{name}}: React.FunctionComponent<Props> = ({
   lorem
 }) => {
   return <div>{lorem}</div>
 }
 
-export default {{templateVariables}}
+export default {{name}}

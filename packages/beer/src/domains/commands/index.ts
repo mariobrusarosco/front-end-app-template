@@ -1,12 +1,13 @@
 import { AVAILABLE_COMMANDS } from "./enum-and-interfaces";
 import { Command } from "commander";
 
-export const setupCommands = (program: Command) => {
-  AVAILABLE_COMMANDS.forEach(({ name, action, aliases, description }) => {
+export const setupToolCommands = (program: Command) =>
+  AVAILABLE_COMMANDS.forEach((setupFn) => {
+    const command = setupFn();
+
     program
-      .command(name)
-      .description(description || "")
-      .action(action)
-      .aliases(aliases);
+      .command(command.name)
+      .description(command.description || "")
+      .action(command.action)
+      .aliases(command.aliases);
   });
-};

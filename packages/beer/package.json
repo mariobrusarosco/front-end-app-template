@@ -13,7 +13,7 @@
     "posttest": "eslint . --ext .ts --config .eslintrc",
     "build": "rm -rf ./lib && tsc && yarn copy-template-to-lib-folder",
     "test": "jest",
-    "dev": "yarn copy-template-to-lib-folder && tsc -watch",
+    "dev": "yarn build && tsc -watch",
     "with-browser": "yarn playwright test --ui  ",
     "headless": "yarn playwright test --project firefox"
   },
