@@ -1,3 +1,6 @@
+#!/usr/bin/env node
+
+import packageJson from "../package.json";
 import { Command } from "commander";
 import { printCliMainMessage } from "./domains/io/output";
 import { setupToolCommands } from "./domains/commands/index";
@@ -12,7 +15,11 @@ const run = async () => {
   await setupToolCommands(program);
 
   // TODO: Get from package.json
-  program.version("0.2.3", "-v, --version", "output the current version");
+  program.version(
+    packageJson.version,
+    "-v, --version",
+    "output the current version"
+  );
   program.parse(process.argv);
 };
 
