@@ -1,13 +1,19 @@
 {
   "compilerOptions": {
-    "declaration": true,
-    "importHelpers": true,
+    "target": "ES6",
     "module": "commonjs",
-    "outDir": "lib",
-    "rootDir": "src",
     "strict": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "lib": ["ES6"],
+    "outDir": "lib",
+    "rootDir": "src"
   },
   "include": ["src/**/*", "global.d.ts"],
-  "exclude": ["src/domains/deprecated"]
+  "exclude": ["src/domains/deprecated", "node_modules", "src/templates"]
 }
