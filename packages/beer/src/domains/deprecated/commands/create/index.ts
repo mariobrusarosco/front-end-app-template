@@ -1,6 +1,6 @@
 import { Argv, Options } from "yargs";
 import { AvailableCommands } from "../enums";
-import { CLICommand } from "../interfaces";
+import { CLICommandOld } from "../interfaces";
 import createDomainCommand from "./domain";
 import createElementCommand from "./element";
 import createPocCommand from "./poc";
@@ -20,7 +20,7 @@ const run = async (args: any) => {
   subCommand();
 };
 
-const createCommand: CLICommand = {
+const createCommand: CLICommandOld = {
   command: `${AvailableCommands.CREATE} <target>`,
   describe: "Creates a React Element: element|domain|poc",
   aliases: ["consagrado"],

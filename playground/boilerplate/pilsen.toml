@@ -5,28 +5,18 @@ pathToDomainsFolder = "src/domains"
 includes=[]
 excludes=[]
 
-[architecture]
-type = "default"
+[react-elements]
 
-[reactElements]
+[react-elements.component]
+  folder = "components"
+  type = "component"
+  testTitle = "Domains | :domainName | Components | :elementName"
+  absolutePath = "@domains/:domainName/components/:elementName"
 
-[reactElements.component]
-  elementFolder = "ui/components"
-  reactElementType = "component"
-  elementTestTitle = "Domains | :domainName | UI | Components | :reactElementName"
-  elementAbsolutePath = "@domains/:domainName/ui/components/:reactElementName"
-
-[reactElements.hook]
-  elementFolder = "ui/hooks"
-  reactElementType = "hook"
-  elementTestTitle = "Domains | :domainName | UI | Hooks | :reactElementName"
-  elementAbsolutePath = "@domains/:domainName/ui/hooks/:reactElementName"
-
-[reactElements.service]
-  elementFolder = "application/services"
-  reactElementType = "service"
-  elementTestTitle = "Domains | :domainName | Application | Services | :reactElementName"
-  elementAbsolutePath = "@domains/:domainName/application/services/:reactElementName"
-
+[react-elements.hook]
+  folder = "hooks"
+  type = "hook"
+  testTitle = "Domains | :domainName | Hooks | :elementName"
+  absolutePath = "@domains/:domainName/hooks/:elementName"
 
 

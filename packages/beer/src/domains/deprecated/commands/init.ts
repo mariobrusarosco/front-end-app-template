@@ -1,12 +1,11 @@
-import yargs from "yargs";
 import { AvailableCommands } from "./enums";
-import { CLICommand } from "./interfaces";
+import { CLICommandOld } from "./interfaces";
 
 const run = async () => {
   console.log("Initializing your project");
 };
 
-const initCommand: CLICommand = {
+const initCommand: CLICommandOld = {
   command: AvailableCommands.INIT,
   describe: "Initialize your project",
   handler: run,

@@ -1,16 +1,3 @@
 #!/usr/bin/env node
 
-const path = require('path')
-const tsConfig = path.join(__dirname, '../tsconfig.json')
-const isDevMode = process.env.DEV_MODE == "true"
-
-
-if(isDevMode) {
-  console.log("Development mode")
-
-  require('ts-node').register({ project: tsConfig })
-  require('../src').default
-
-} else {
-  return require('../lib').default
-}
+require("../lib/index");

@@ -27,7 +27,7 @@ const createElementCommand = async (args: any) => {
     elementPath,
   };
 
-  copyAndParseTemplates({
+  ac({
     templateFolder,
     destinationFolder,
     templateVariables,

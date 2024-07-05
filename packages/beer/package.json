@@ -9,23 +9,30 @@
   "main": "lib/index.js",
   "repository": "mariobrusarosco/my-beer",
   "scripts": {
-    "move-template-to-lib-folder": "cp -r src/templates lib",
+    "copy-template-to-lib-folder": "cp -r src/templates lib",
     "posttest": "eslint . --ext .ts --config .eslintrc",
-    "build": "rm -rf ./lib && tsc && yarn move-template-to-lib-folder",
+    "build": "rm -rf ./lib && tsc && yarn copy-template-to-lib-folder",
     "test": "jest",
-    "dev": "tsc -watch"
+    "dev": "yarn copy-template-to-lib-folder && tsc -watch",
+    "with-browser": "yarn playwright test --ui  ",
+    "headless": "yarn playwright test --project firefox"
   },
   "types": "lib/index.d.ts",
   "bin": {
-    "beer": "./bin/run"
+    "beer": "./lib/index.js"
   },
   "bugs": "https://github.com/mariobrusarosco/my-beer/issues",
   "dependencies": {
     "@types/app-root-path": "^1.2.4",
+    "@types/axios": "^0.14.0",
     "@types/chai": "^4.2.21",
+    "@types/node": "^20.14.9",
     "@types/yargs": "^17.0.2",
     "app-root-path": "^3.0.0",
+    "axios": "^1.7.2",
     "chalk": "^4.1.2",
+    "cheerio": "^1.0.0-rc.12",
+    "commander": "^12.1.0",
     "copy-template-dir": "^1.4.0",
     "cosmiconfig": "^7.0.0",
     "cpx": "^1.5.0",
@@ -38,13 +45,17 @@
     "lodash": "^4.17.21",
     "npc": "^0.0.1",
     "recursive-copy": "^2.0.13",
+    "superagent": "^9.0.2",
     "toml": "^3.0.0",
     "tslib": "^1",
+    "typescript": "^5.5.2",
     "yaml": "^1.10.2",
     "yargs": "^17.0.1"
   },
   "devDependencies": {
     "@jest/types": "^27.0.6",
+    "@playwright/test": "^1.45.0",
+    "@types/axios": "^0.14.0",
     "@types/inquirer": "^7.3.3",
     "@types/jest": "^26.0.24",
     "@types/lodash": "^4.14.172",

@@ -5,6 +5,16 @@
 //   POC = "new-poc",
 // }
 
+import { CommandBuilder } from "yargs";
+
+export type CLICommandOld = {
+  command: string;
+  aliases?: string | string[];
+  describe?: string;
+  builder?: CommandBuilder;
+  handler: (args: any) => void;
+};
+
 export const AvailableCommands = {
   CREATE: "create",
   GENERATE: "generate",
