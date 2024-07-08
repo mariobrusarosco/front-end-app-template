@@ -10,13 +10,11 @@ excludes=[]
 [react-elements.component]
   folder = "components"
   type = "component"
-  testTitle = "Domains | :domainName | Components | :elementName"
-  absolutePath = "@domains/:domainName/components/:elementName"
 
 [react-elements.hook]
   folder = "hooks"
   type = "hook"
-  testTitle = "Domains | :domainName | Hooks | :elementName"
-  absolutePath = "@domains/:domainName/hooks/:elementName"
 
-
+[react-elements.context]
+  folder = "context"
+  type = "context"
