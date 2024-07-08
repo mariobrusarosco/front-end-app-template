@@ -8,21 +8,23 @@ export const generateDomainsList = async () =>
     outputProcess("[CONFIGURATION] - GENERATING DOMAINS LIST");
 
     try {
-      const config = getConfig();
-      const domainsToBeIncluded = config.domains.includes || [];
-      if (domainsToBeIncluded.length) return domainsToBeIncluded;
+      const domains = getConfig()?.domains;
+      const domainsToBeIncluded = domains?.includes || [];
+      const domainsToBeExcluded = domains.excludes || [];
 
-      const domainsToBeExcluded = config.domains.excludes || [];
+      if (!domains.pathToDomainsFolder) return resolve(null);
+      if (domainsToBeIncluded.length > 0) return resolve(domainsToBeIncluded);
 
-      const domainsPath = path.join(
+      const domainsFolderPath = path.join(
         process.cwd(),
-        config.domains.pathToDomainsFolder
+        domains.pathToDomainsFolder
       );
+
       const trackedFolders = fs
-        .readdirSync(domainsPath)
+        .readdirSync(domainsFolderPath)
         ?.filter((domain) => !domainsToBeExcluded.includes(domain));
 
-      config.domains.trackedFolders = trackedFolders;
+      domains.trackedFolders = trackedFolders;
       resolve(trackedFolders);
     } catch (error) {
       outputFatalError(`[CONFIGURATION] - ${error}`);

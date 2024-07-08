@@ -6,17 +6,15 @@ your code.
 
 ## Packages x Playground
 
-_These are the main places we'll use to develop this tool._
+_These are the main locations which we'll use to develop this tool._
 
-**Packages** folder holds the source code.
+**Packages** folder holds the source code. This is where the code for the CLI is located.
 
-**Playground** folder is where we'll simulte tool's usage with our local code changes, so we don't have to commit, push and publish our changes to see them in action.
+**Playground** folder is where we'll simulte the tool's usage with our local code changes, so we don't have to commit, push and publish our changes to see them in action.
 
 ## Packages
 
-This project has only one project for now. It's called `beer`. It's a CLI tool that helps us to create a new project with a pre-defined structure.
-
-To start the development of it, we need to:
+This project has only one package for now. To start the development of it, we need to:
 
 1. Access the root folder of the project. it contains a `package.json` file:
 

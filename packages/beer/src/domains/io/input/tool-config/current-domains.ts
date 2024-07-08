@@ -27,7 +27,7 @@ export const askAboutDomainName = () => {
         type: "autocomplete",
         message: "Type your domain name",
         emptyText:
-          "No domain was found. If you need to create a new one use the command 'beer new domain'",
+          "No domain was found. This CLI require a strict structure to improve code consistency. We are improving the docs, so you can better understand how to structure your codebase to fits this tool requirements",
         pageSize: 4,
         source: searchForDomains,
       },
